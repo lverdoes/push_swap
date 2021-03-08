@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/07 22:37:06 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/03/08 12:58:48 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,17 +66,17 @@ all: $(NAME) $(NAME_2)
 
 obj/%.o: src/%.c
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 	mv $(LIBFT_DIR)$(LIBFT) .
 
 $(NAME): $(LIBFT) $(OBJ_1)
-	@$(CC) $(FLAGS) -o $(NAME) $(LIBFT) $(OBJ_1)
+	$(CC) $(FLAGS) -o $(NAME) $(LIBFT) $(OBJ_1)
 
 $(NAME_2): $(LIBFT) $(OBJ_2)
-	@$(CC) $(FLAGS) -o $(NAME_2) $(LIBFT) $(OBJ_2)
+	$(CC) $(FLAGS) -o $(NAME_2) $(LIBFT) $(OBJ_2)
 
 .PHONY: clean fclean re
 
@@ -91,8 +91,3 @@ fclean: clean
 	make fclean -C $(LIBFT_DIR)
 
 re: fclean all
-
-ARG = 4 7 3 2 1
-
-test: all
-	./push_swap $(ARG) | ./checker $(ARG) ; ./push_swap $(ARG) | wc -l

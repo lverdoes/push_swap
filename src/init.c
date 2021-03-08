@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 20:19:12 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/07 22:18:49 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/08 12:58:02 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static size_t	node_index(t_node *start, void *data_ref, int (*cmp)())
 static void	assign_rank(t_vars *v)
 {
 	t_node	*node;
-	t_node	*tmp;
 	t_elem	*elem;
 
 	node = v->a;
@@ -56,7 +55,6 @@ static void	assign_rank(t_vars *v)
 	{
 		elem = node->content;
 		elem->rank = node_index(v->sorted, node->content, intcmp);
-		tmp = node;
 		node = node->next;
 	}
 }
