@@ -6,14 +6,13 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/07 22:08:40 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/08 13:04:02 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-#       include <stdio.h> //debug
 # include "libft.h"
 
 # define STDIN 0

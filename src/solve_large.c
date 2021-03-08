@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/07 20:57:26 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/07 22:05:18 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/08 13:03:23 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	phase_one(t_vars *v)
 	}
 }
 
-int		solve_large(t_vars *v)
+int	solve_large(t_vars *v)
 {
 	phase_one(v);
 	phase_two(v);

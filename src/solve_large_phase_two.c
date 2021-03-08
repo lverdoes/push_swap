@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/07 21:55:06 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/07 22:00:26 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/08 13:03:50 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	phase_two(t_vars *v)
 	{
 		if (group_b(v, v->b))
 			phase_two_b(v, &i);
-	
 		else
 			phase_two_c(v, &i);
 		i++;

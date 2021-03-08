@@ -6,14 +6,14 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 19:46:11 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/07 22:25:22 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/08 13:02:47 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
 void	read_instruction(t_vars *v, char const *const line)
-{	//https://www.sanfoundry.com/c-tutorials-jump-tables/
+{
 	if (!ft_strncmp(line, "sa", 3))
 		sa(v);
 	else if (!ft_strncmp(line, "sb", 3))

@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/08 12:58:48 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/03/08 13:04:54 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,7 @@ INCL_DIR	=	incl/
 INCL		=	-I $(INCL_DIR) -I $(LIBFT_DIR)
 
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror -pedantic $(INCL) $(UN)
-UN			=	-Wno-unused-variable -Wno-unused-parameter -Wno-unused-function
+FLAGS		=	-Wall -Wextra -Werror -pedantic $(INCL)
 
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
