@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/08 13:04:54 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/03/08 17:52:42 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,9 @@ SRC_FILES_2	=	main_push_swap.c \
 				solve_small.c \
 				solve_medium.c \
 				solve_large.c \
-				solve_large_phase_two.c \
-				solve_large_phase_three.c \
+				solve_huge.c \
+				solve_huge_phase_two.c \
+				solve_huge_phase_three.c \
 				rotation_order.c \
 				is_ordered.c \
 				find_high_low.c \
@@ -58,8 +59,8 @@ SRC_FILES_2	=	main_push_swap.c \
 
 SRC_1 		=	$(addprefix $(SRC_DIR), $(SRC_FILES_1))
 SRC_2 		=	$(addprefix $(SRC_DIR), $(SRC_FILES_2))
-OBJ_1 		=	$(SRC_1:src/%.c=obj/%.o)
-OBJ_2 		=	$(SRC_2:src/%.c=obj/%.o)
+OBJ_1 		=	$(SRC_1:$(SRC_DIR)%.c=$(OBJ_DIR%.o)
+OBJ_2 		=	$(SRC_2:$(SRC_DIR)%.c=$(OBJ_DIR%.o)
 
 all: $(NAME) $(NAME_2)
 

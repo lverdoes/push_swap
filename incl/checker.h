@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/08 13:04:02 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/08 15:33:10 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define INT_MIN -2147483648
 # define MEDIUM 32
 # define LARGE 50
+# define HUGE 100
 # define LIMIT 25
 
 typedef struct s_element
@@ -65,6 +66,7 @@ int		solve(t_vars *v);
 int		solve_small(t_vars *v);
 int		solve_medium(t_vars *v);
 int		solve_large(t_vars *v);
+int		solve_huge(t_vars *v);
 void	phase_two(t_vars *v);
 void	phase_three(t_vars *v);
 
