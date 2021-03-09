@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/07 20:51:48 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/07 20:53:38 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/09 08:03:08 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	group_b1(t_vars *v, t_node *stack)
 {
-	if (group_large(v, stack, 15))
+	if (group_large(v, stack, 12))
 		return (1);
 	return (0);
 }

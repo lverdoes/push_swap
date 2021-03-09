@@ -6,62 +6,106 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/08 15:35:30 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/08 17:50:52 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/09 23:58:50 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static void	part_two(t_vars *v)
+int	is_first_quarter(t_vars *v)
 {
 	t_elem	*e;
+	double	quarter;
+	
+	e = v->b->content;
+	quarter = (double)(v->total_size) / 4;
+	if (e->rank < quarter)
+		return (1);
+	return (0);
+}
+
+int	is_top_half(t_vars *v, t_node *stack)
+{
+	t_elem	*e;
+	double	half;
+
+	e = stack->content;
+	half = (double)(v->total_size) / 2;
+	if (e->rank > half)
+		return (1);
+	return (0);
+}
+
+void split_50_25_25(t_vars *v)
+{
 	size_t	i;
-	size_t	tmp;
+	size_t	size;
 
 	i = 0;
-	tmp = v->size_b;
-	while (i < tmp)
+	size = v->size_a;
+	while (i < size)
 	{
-		e = v->b->content;
-		if (e->rank <= v->total_size / 7 * 3) //middle third
+		if (is_top_half(v, v->a))
+			cmd_ra(v);
+		else
 		{
-			if (e->rank >= v->total_size / 7 * 6 / 3)
-				cmd_rb(v);
-			else
+			cmd_pb(v);
+			if (is_first_quarter(v))
 			{
-				cmd_pa(v);
-				if (1) //middle middle or top middle
+				if (is_top_half(v, v->a))
 				{
-					
+					cmd_rr(v);
+					i++;
 				}
+				else
+					cmd_rb(v);
 			}
-		}
-		else	//bottom third
-		{
-			
 		}
 		i++;
 	}
 }
 
-static void	part_one(t_vars *v)
+int	is_top_third(t_vars *v)
 {
 	t_elem	*e;
+	double	top;
+
+	e = v->a->content;
+	top = (double)(v->total_size / 3) * 2;
+	if (e->rank > top)
+		return (1);
+	return (0);
+}
+
+int	is_bottom_third(t_vars *v)
+{
+	t_elem	*e;
+	double	top;
+
+	e = v->b->content;
+	top = (double)(v->total_size / 3) * 2;
+	if (e->rank < top)
+		return (1);
+	return (0);
+}
+
+void split_thirds(t_vars *v)
+{
 	size_t	i;
+	size_t	size;
 
 	i = 0;
-	while (i < v->total_size)
+	size = v->size_a;
+	while (i < size)
 	{
-		e = v->a->content;
-		if (e->rank >= v->total_size / 7 * 6)	//top (1/7 / 85.7%)
+		if (is_top_third(v))
 			cmd_ra(v);
 		else
 		{
 			cmd_pb(v);
-			if (e->rank < v->total_size / 7 * 3)	//bottom third (0-42.8%)
+			if (is_bottom_third(v))
 			{
-				e = v->a->content;
-				if (e->rank >= v->total_size / 7 * 6)	//middle third (42.8-85.7%)
+				if (is_top_third(v))
 				{	
 					cmd_rr(v);
 					i++;
@@ -76,7 +120,8 @@ static void	part_one(t_vars *v)
 
 int	solve_large(t_vars *v)
 {
-	part_one(v);
-	part_two(v);
+	split_50_25_25(v);
+	split_thirds(v);
+	solve_medium(v);
 	return (1);
 }

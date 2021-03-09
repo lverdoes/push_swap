@@ -6,13 +6,14 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/08 15:33:10 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/09 23:41:26 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
+#          include <stdio.h>
 # include "libft.h"
 
 # define STDIN 0
@@ -20,10 +21,10 @@
 # define STDERR 2
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
-# define MEDIUM 32
+# define MEDIUM 15
 # define LARGE 50
-# define HUGE 100
-# define LIMIT 25
+# define HUGE 150
+# define LIMIT 10
 
 typedef struct s_element
 {
@@ -40,6 +41,9 @@ typedef struct s_variables
 	size_t	total_size;
 	t_node	*sorted;
 	size_t	max_rank;
+	size_t	gr_a;
+	size_t	gr_b;
+	size_t	gr_c;
 }	t_vars;
 
 typedef struct s_args
@@ -56,8 +60,9 @@ void	read_instruction(t_vars *v, char const *const line);
 /*		sorting	*/
 int		rotate_left_or_right(t_vars *v, t_node *stack);
 int		correct_rotation_order(t_vars *v, int exception);
-int		is_ordered_a(t_vars *v);
-int		is_ordered_b(t_vars *v);
+int		is_ordered_a(t_vars *v, size_t len);
+int		is_ordered_b(t_vars *v, size_t len);
+int		swap_routine(t_vars *v);
 size_t	find_highest_rank(t_node *stack);
 size_t	find_lowest_rank(t_node *stack);
 
@@ -118,9 +123,11 @@ int		cmd_rrb(t_vars *v);
 int		cmd_rrr(t_vars *v);
 
 /*		groups	*/
-int		group_large(t_vars *v, t_node *stack, int min);
-int		group_small(t_vars *v, t_node *stack, int min);
+int		group_large(t_vars *v, t_node *stack, double min);
+int		group_small(t_vars *v, t_node *stack, double min);
 int		group_a(t_vars *v, t_node *stack);
+int		group_a2(t_vars *v, t_node *stack);
+int		group_a3(t_vars *v, t_node *stack);
 int		group_b(t_vars *v, t_node *stack);
 int		group_c(t_vars *v, t_node *stack);
 int		group_b1(t_vars *v, t_node *stack);

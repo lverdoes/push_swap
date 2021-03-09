@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/07 21:55:06 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/08 15:30:28 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/09 10:23:16 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,17 @@ static void	phase_two_c(t_vars *v, size_t *i)
 void	phase_two(t_vars *v)
 {
 	size_t	i;
-	size_t	tmp;
 
 	i = 0;
-	tmp = v->size_b;
-	while (i < tmp)
+	while (i < v->gr_b)
 	{
-		if (group_b(v, v->b))
-			phase_two_b(v, &i);
-		else
-			phase_two_c(v, &i);
+		phase_two_b(v, &i);
+		i++;
+	}
+	i = 0;
+	while (i < v->gr_b)
+	{
+		phase_two_c(v, &i);
 		i++;
 	}
 }

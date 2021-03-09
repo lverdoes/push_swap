@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 21:38:51 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/07 21:39:38 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/09 23:37:39 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,9 @@ static size_t	calc_limit(t_vars *v)
 {
 	size_t	limit;
 
-	limit = find_lowest_rank(v->a) + (v->size_a) / LIMIT;
-	if (limit < 10)
-		limit = 10;
-	if (limit > v->max_rank - 2 * MEDIUM)
-		return (find_lowest_rank(v->a));
+	limit = find_lowest_rank(v->a) + LIMIT;
+//	if (limit + LIMIT + MEDIUM > v->max_rank)
+//		return (find_lowest_rank(v->a));
 	return (limit);
 }
 

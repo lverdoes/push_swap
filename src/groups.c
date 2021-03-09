@@ -6,32 +6,36 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/07 12:08:43 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/07 20:54:05 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/09 08:22:48 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	group_large(t_vars *v, t_node *stack, int min)
+int	group_large(t_vars *v, t_node *stack, double val)
 {
 	t_elem	*e;
-	double	num;
+	double	min;
+	double	max;
 
 	e = stack->content;
-	num = v->total_size / 21;
-	if (e->rank >= num * min && e->rank <= num * (min + 3))
+	min = (double)v->total_size / 21 * val;
+	max = (double)v->total_size / 21 * (val + 3);
+	if (e->rank >= min && e->rank < max)
 		return (1);
 	return (0);
 }
 
-int	group_small(t_vars *v, t_node *stack, int min)
+int	group_small(t_vars *v, t_node *stack, double val)
 {
 	t_elem	*e;
-	double	num;
+	double	min;
+	double	max;
 
 	e = stack->content;
-	num = v->total_size / 21;
-	if (e->rank >= num * min && e->rank < num * (min + 1))
+	min = (double)v->total_size / 21 * val;
+	max = (double)v->total_size / 21 * (val + 1);
+	if (e->rank >= min && e->rank < max)
 		return (1);
 	return (0);
 }

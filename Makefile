@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/08 17:52:42 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/03/09 23:48:04 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ INCL_DIR	=	incl/
 INCL		=	-I $(INCL_DIR) -I $(LIBFT_DIR)
 
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror -pedantic $(INCL)
+FLAGS		=	-Wall -Wextra -Werror -pedantic -O3 $(INCL) $(UNUSED)
+UNUSED		=	-Wno-unused-variable -Wno-unused-parameter -Wno-unused-function
 
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
@@ -39,10 +40,10 @@ SRC_FILES_1	=	main_checker.c \
 				$(COMMON_SRC)
 
 SRC_FILES_2	=	main_push_swap.c \
-				solve.c \
 				cmd_rev_rot.c \
 				cmd_rot.c \
 				cmd_push_swap.c \
+				solve.c \
 				solve_small.c \
 				solve_medium.c \
 				solve_large.c \
@@ -53,14 +54,16 @@ SRC_FILES_2	=	main_push_swap.c \
 				is_ordered.c \
 				find_high_low.c \
 				groups.c \
+				group_a.c \
 				group_b.c \
 				group_c.c \
+				swap_routine.c \
 				$(COMMON_SRC)
 
 SRC_1 		=	$(addprefix $(SRC_DIR), $(SRC_FILES_1))
 SRC_2 		=	$(addprefix $(SRC_DIR), $(SRC_FILES_2))
-OBJ_1 		=	$(SRC_1:$(SRC_DIR)%.c=$(OBJ_DIR%.o)
-OBJ_2 		=	$(SRC_2:$(SRC_DIR)%.c=$(OBJ_DIR%.o)
+OBJ_1 		=	$(SRC_1:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
+OBJ_2 		=	$(SRC_2:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
 all: $(NAME) $(NAME_2)
 
@@ -91,3 +94,13 @@ fclean: clean
 	make fclean -C $(LIBFT_DIR)
 
 re: fclean all
+
+py: all
+	python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
+
+
+#	export arg=$(<./tests/test0)
+arg: all
+#	@./push_swap $($@)
+	@./push_swap $($@) | ./checker $($@)
+	@./push_swap $($@) | wc -l
