@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/09 23:41:26 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/10 00:47:25 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define MEDIUM 15
 # define LARGE 50
 # define HUGE 150
-# define LIMIT 10
+# define LIMIT 8
 
 typedef struct s_element
 {
