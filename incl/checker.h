@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 08:33:04 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/10 10:22:01 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_variables
 	size_t	gr_a;
 	size_t	gr_b;
 	size_t	gr_c;
+	t_node	*last_a;
+	t_node	*last_b;
 }	t_vars;
 
 typedef struct s_args

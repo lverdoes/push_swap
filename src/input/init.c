@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 20:19:12 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/08 12:58:02 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/10 10:24:13 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,5 @@ void	init(t_vars *v, size_t size, char **args)
 	v->total_size = ft_node_size(v->a);
 	v->size_a = v->total_size;
 	v->max_rank = v->total_size - 1;
+	v->last_a = ft_node_last(v->a);
 }

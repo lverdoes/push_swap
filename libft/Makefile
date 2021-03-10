@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/04 13:12:33 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/05 16:54:53 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/03/10 11:38:45 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME	= libft.a
 HEADERS = libft.h
 CC		= gcc
 FLAGS	= -Wall -Wextra -Werror -pedantic -I.
-UNUSED	= -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function
 
 MANDATORY =	\
 	ft_memset.c \
