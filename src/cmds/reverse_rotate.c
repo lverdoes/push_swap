@@ -6,14 +6,12 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 16:40:43 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 11:16:11 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/10 11:47:22 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-
-#include <stdio.h>
 void	rra(t_vars *v)
 {
 	t_node	*tmp;

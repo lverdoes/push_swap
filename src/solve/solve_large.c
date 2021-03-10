@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/08 15:35:30 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 01:21:35 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/10 12:13:04 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static int	is_first_quarter(t_vars *v)
 {
 	t_elem	*e;
 	double	quarter;
-	
+
 	e = v->b->content;
-	quarter = (double)(v->total_size) / 5;
+	quarter = (double)v->total_size / 5;
 	if (e->rank < quarter)
 		return (1);
 	return (0);
@@ -30,7 +30,7 @@ static int	is_top_half(t_vars *v, t_node *stack)
 	double	half;
 
 	e = stack->content;
-	half = (double)(v->total_size) / 5 * 2;
+	half = (double)v->total_size / 5 * 2;
 	if (e->rank > half)
 		return (1);
 	return (0);

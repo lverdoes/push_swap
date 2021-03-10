@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/10 00:59:56 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 01:21:21 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/10 12:12:54 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	is_top_third(t_vars *v)
 	double	top;
 
 	e = v->a->content;
-	top = (double)(v->total_size / 5) * 4;
+	top = (double)v->total_size / 5 * 4;
 	if (e->rank > top)
 		return (1);
 	return (0);
@@ -30,7 +30,7 @@ static int	is_bottom_third(t_vars *v)
 	double	top;
 
 	e = v->b->content;
-	top = (double)(v->total_size / 5) * 3;
+	top = (double)v->total_size / 5 * 3;
 	if (e->rank < top)
 		return (1);
 	return (0);
