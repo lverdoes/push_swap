@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 21:38:51 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/09 23:37:39 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/10 08:41:45 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,6 @@ static int	rotate_direction(t_vars *v, size_t target)
 	return (1);
 }
 
-static size_t	calc_limit(t_vars *v)
-{
-	size_t	limit;
-
-	limit = find_lowest_rank(v->a) + LIMIT;
-//	if (limit + LIMIT + MEDIUM > v->max_rank)
-//		return (find_lowest_rank(v->a));
-	return (limit);
-}
-
 int	solve_medium(t_vars *v)
 {
 	size_t	limit;
@@ -69,7 +59,7 @@ int	solve_medium(t_vars *v)
 	while (v->size_a > MEDIUM)
 	{
 		e = v->a->content;
-		limit = calc_limit(v);
+		limit = find_lowest_rank(v->a) + LIMIT;
 		if (e->rank <= limit)
 			cmd_pb(v);
 		rot = rotate_direction(v, find_lowest_rank(v->a));

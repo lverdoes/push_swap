@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 01:21:48 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/10 08:33:04 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 # define MEDIUM 15
-# define LARGE 50
+# define LARGE 45
 # define HUGE 150
 # define LIMIT 8
 
