@@ -6,14 +6,13 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 00:47:25 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/10 01:21:48 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-#          include <stdio.h>
 # include "libft.h"
 
 # define STDIN 0
@@ -59,10 +58,9 @@ void	read_instruction(t_vars *v, char const *const line);
 
 /*		sorting	*/
 int		rotate_left_or_right(t_vars *v, t_node *stack);
-int		correct_rotation_order(t_vars *v, int exception);
+int		is_correct_rotation_order(t_vars *v, int exception);
 int		is_ordered_a(t_vars *v, size_t len);
 int		is_ordered_b(t_vars *v, size_t len);
-int		swap_routine(t_vars *v);
 size_t	find_highest_rank(t_node *stack);
 size_t	find_lowest_rank(t_node *stack);
 
@@ -71,11 +69,12 @@ int		solve(t_vars *v);
 int		solve_small(t_vars *v);
 int		solve_medium(t_vars *v);
 int		solve_large(t_vars *v);
+void	split_large_thirds(t_vars *v);
 int		solve_huge(t_vars *v);
 void	phase_two(t_vars *v);
 void	phase_three(t_vars *v);
 
-/*		exit	*/
+/*		errors	*/
 void	ft_exit(char *str);
 void	check_minmax_int(char *str);
 void	check_malloc(void *ptr);
@@ -129,10 +128,10 @@ int		group_a(t_vars *v, t_node *stack);
 int		group_a2(t_vars *v, t_node *stack);
 int		group_a3(t_vars *v, t_node *stack);
 int		group_b(t_vars *v, t_node *stack);
-int		group_c(t_vars *v, t_node *stack);
 int		group_b1(t_vars *v, t_node *stack);
 int		group_b2(t_vars *v, t_node *stack);
 int		group_b3(t_vars *v, t_node *stack);
+int		group_c(t_vars *v, t_node *stack);
 int		group_c1(t_vars *v, t_node *stack);
 int		group_c2(t_vars *v, t_node *stack);
 int		group_c3(t_vars *v, t_node *stack);

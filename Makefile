@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/10 00:52:07 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/03/10 01:17:46 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,45 +19,44 @@ INCL_DIR	=	incl/
 INCL		=	-I $(INCL_DIR) -I $(LIBFT_DIR)
 
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror -pedantic -O3 $(INCL) $(UNUSED)
-UNUSED		=	-Wno-unused-variable -Wno-unused-parameter -Wno-unused-function
+FLAGS		=	-Wall -Wextra -Werror -pedantic -O3 $(INCL)
 
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
 
-COMMON_SRC	=	check_args.c \
-				check_duplicate.c \
-				exit.c \
-				init.c \
-				push.c \
-				reverse_rotate.c \
-				rotate.c \
-				swap.c \
+COMMON_SRC	=	/input/check_args.c \
+				/errors/check_duplicate.c \
+				/errors/exit.c \
+				/input/init.c \
+				/instructions/push.c \
+				/instructions/reverse_rotate.c \
+				/instructions/rotate.c \
+				/instructions/swap.c \
 				utils.c
 
 SRC_FILES_1	=	main_checker.c \
-				read_instruction.c \
+				/input/read_instruction.c \
 				$(COMMON_SRC)
 
 SRC_FILES_2	=	main_push_swap.c \
-				cmd_rev_rot.c \
-				cmd_rot.c \
-				cmd_push_swap.c \
-				solve.c \
-				solve_small.c \
-				solve_medium.c \
-				solve_large.c \
-				solve_huge.c \
-				solve_huge_phase_two.c \
-				solve_huge_phase_three.c \
-				rotation_order.c \
-				is_ordered.c \
-				find_high_low.c \
-				groups.c \
-				group_a.c \
-				group_b.c \
-				group_c.c \
-				swap_routine.c \
+				/instructions/cmd_rev_rot.c \
+				/instructions/cmd_rot.c \
+				/instructions/cmd_push_swap.c \
+				/solve/solve.c \
+				/solve/solve_small.c \
+				/solve/solve_medium.c \
+				/solve/solve_large.c \
+				/solve/solve_large_utils.c \
+				/solve/solve_huge.c \
+				/solve/solve_huge_phase_two.c \
+				/solve/solve_huge_phase_three.c \
+				/sorting/rotation_order.c \
+				/sorting/is_ordered.c \
+				/sorting/find_high_low.c \
+				/groups/groups.c \
+				/groups/group_a.c \
+				/groups/group_b.c \
+				/groups/group_c.c \
 				$(COMMON_SRC)
 
 SRC_1 		=	$(addprefix $(SRC_DIR), $(SRC_FILES_1))
@@ -98,9 +97,6 @@ re: fclean all
 py: all
 	python3 pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
 
-
-#	export arg=$(<./tests/test0)
 arg: all
-#	@./push_swap $($@)
-	@./push_swap $($@) | ./checker $($@)
-	@./push_swap $($@) | wc -l
+	./push_swap $($@) | ./checker $($@)
+	./push_swap $($@) | wc -l

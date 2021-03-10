@@ -6,13 +6,13 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/05 08:40:11 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/09 18:50:40 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/10 01:02:46 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	correct_rotation_order(t_vars *v, int exception)
+int	is_correct_rotation_order(t_vars *v, int exception)
 {
 	t_node	*tmp;
 	t_node	*next;
