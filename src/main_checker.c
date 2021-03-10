@@ -6,11 +6,12 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:23:36 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/07 22:22:27 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/10 13:48:54 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#include "unistd.h"
 
 int	main(int argc, char **argv)
 {
@@ -24,7 +25,7 @@ int	main(int argc, char **argv)
 	ret = 1;
 	while (ret == 1)
 	{
-		ret = get_next_line(STDIN, &line);
+		ret = get_next_line(STDIN_FILENO, &line);
 		if (ret < 0)
 			ft_exit("Error");
 		if (ret == 0)

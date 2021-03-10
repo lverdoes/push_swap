@@ -6,11 +6,12 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/05 16:32:20 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/05 17:59:44 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/10 13:52:04 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#include <limits.h>
 
 size_t	find_highest_rank(t_node *stack)
 {

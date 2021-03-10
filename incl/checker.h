@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 10:22:01 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/10 13:43:33 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 
 # include "libft.h"
 
-# define STDIN 0
-# define STDOUT 1
-# define STDERR 2
-# define INT_MAX 2147483647
-# define INT_MIN -2147483648
 # define MEDIUM 15
 # define LARGE 45
 # define HUGE 150
