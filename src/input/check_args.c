@@ -6,11 +6,12 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 23:23:16 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/05 17:59:17 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/11 16:28:43 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#include <stdio.h>
 
 static char	*append_to_str(char **array, char *str)
 {
@@ -41,10 +42,18 @@ void	check_args(t_args *a, int argc, char **argv)
 	{
 		array = ft_split_strchr(argv[i], " ", &size);
 		check_malloc(array);
+		if (size == 0)
+		{
+			ft_free(array);
+			i++;
+			continue ;
+		}
 		str = append_to_str(array, str);
 		ft_free_array((void **)array, size);
 		i++;
 	}
+	if (!str)
+		ft_exit(NULL);
 	a->args = ft_split_strchr(str, " ", &a->size);
 	check_malloc(a->args);
 	ft_free(str);
