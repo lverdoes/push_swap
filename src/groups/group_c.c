@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/07 20:52:24 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/16 17:12:57 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/16 17:31:11 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,32 @@
 
 int	group_c1(t_vars *v, t_node *stack)
 {
-	if (group_large(v, stack, 6))
+	if (group_large(v, stack, 4))
 		return (1);
 	return (0);
 }
 
 int	group_c2(t_vars *v, t_node *stack)
 {
-	if (group_large(v, stack, 9))
+	if (group_large(v, stack, 16))
+		return (1);
+	return (0);
+}
+
+int	group_c3(t_vars *v, t_node *stack)
+{
+	if (group_c3a(v, stack))
+		return (1);
+	if (group_c3b(v, stack))
+		return (1);
+	if (group_c3c(v, stack))
 		return (1);
 	return (0);
 }
 
 int	group_c3a(t_vars *v, t_node *stack)
 {
-	if (group_small(v, stack, 3))
+	if (group_small(v, stack, 20))
 		return (1);
 	return (0);
 }
@@ -43,17 +54,6 @@ int	group_c3b(t_vars *v, t_node *stack)
 int	group_c3c(t_vars *v, t_node *stack)
 {
 	if (group_small(v, stack, 0))
-		return (1);
-	return (0);
-}
-
-int	group_c3(t_vars *v, t_node *stack)
-{
-	if (group_c3a(v, stack))
-		return (1);
-	if (group_c3b(v, stack))
-		return (1);
-	if (group_c3c(v, stack))
 		return (1);
 	return (0);
 }

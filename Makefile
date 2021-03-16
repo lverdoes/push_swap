@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/16 16:47:15 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/03/16 20:14:19 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,5 +99,6 @@ py: all
 	python3 ./tester/pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
 
 arg: all
+#	@/bin/rm -rf $(OBJ_DIR)
 	@./push_swap $($@) | ./checker $($@)
 	@./push_swap $($@) | wc -l
