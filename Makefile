@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/16 12:11:14 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/03/16 16:47:15 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,7 +96,7 @@ fclean: clean
 re: fclean all
 
 py: all
-	python3 ./tester/pyviz.py `ruby -e "puts (0..99).to_a.shuffle.join(' ')"`
+	python3 ./tester/pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
 
 arg: all
 	@./push_swap $($@) | ./checker $($@)

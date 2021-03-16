@@ -6,13 +6,13 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/07 21:54:55 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 01:37:27 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/16 16:47:00 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static void	phase_three_b(t_vars *v, size_t *i)
+static void	phase_three_b(t_vars *v, size_t * const i)
 {
 	if (group_small(v, v->b, 1))
 		cmd_rb(v);
@@ -24,7 +24,7 @@ static void	phase_three_b(t_vars *v, size_t *i)
 			if (group_small(v, v->b, 1))
 			{
 				cmd_rr(v);
-				i++;
+				*i += 1;
 			}
 			else
 				cmd_ra(v);
@@ -32,7 +32,7 @@ static void	phase_three_b(t_vars *v, size_t *i)
 	}
 }
 
-static void	phase_three_c(t_vars *v, size_t *i)
+static void	phase_three_c(t_vars *v, size_t * const i)
 {
 	if (group_small(v, v->b, 0))
 		cmd_rb(v);
@@ -44,7 +44,7 @@ static void	phase_three_c(t_vars *v, size_t *i)
 			if (group_small(v, v->b, 0))
 			{
 				cmd_rr(v);
-				i++;
+				*i += 1;
 			}
 			else
 				cmd_ra(v);

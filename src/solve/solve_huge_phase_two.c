@@ -6,13 +6,13 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/07 21:55:06 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/09 10:23:16 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/16 16:47:50 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static void	phase_two_b(t_vars *v, size_t *i)
+static void	phase_two_b(t_vars *v, size_t * const i)
 {
 	if (group_b3(v, v->b))
 		cmd_rb(v);
@@ -32,7 +32,7 @@ static void	phase_two_b(t_vars *v, size_t *i)
 	}
 }
 
-static void	phase_two_c(t_vars *v, size_t *i)
+static void	phase_two_c(t_vars *v, size_t * const i)
 {
 	if (group_c3(v, v->b))
 		cmd_rb(v);

@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/07 20:57:26 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 00:47:20 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/16 16:47:59 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	phase_one_a(t_vars *v)
 	push_back(v, push_count);
 }
 
-static void	phase_one(t_vars *v, size_t *i)
+static void	phase_one(t_vars *v, size_t * const i)
 {
 	if (group_a(v, v->a))
 	{
