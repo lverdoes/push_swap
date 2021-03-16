@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 18:18:28 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 01:03:18 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/16 14:21:03 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static int	solve_3(t_vars *v, size_t add)
 		cmd_sa(v);
 		return (cmd_rra(v));
 	}
-	cmd_pb(v);
 	cmd_sa(v);
+	cmd_ra(v);
 	return (cmd_papa(v));
 }
 
