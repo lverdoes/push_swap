@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/07 12:08:43 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 12:12:36 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/16 17:00:31 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,37 +42,33 @@ int	group_small(t_vars *v, t_node *stack, double val)
 
 int	group_a(t_vars *v, t_node *stack)
 {
-	if (group_large(v, stack, 18))
+	if (group_a1(v, stack))
+		return (1);
+	if (group_a2(v, stack))
+		return (1);
+	if (group_a3(v, stack))
 		return (1);
 	return (0);
 }
 
 int	group_b(t_vars *v, t_node *stack)
 {
-	if (group_large(v, stack, 15))
+	if (group_b1(v, stack))
 		return (1);
-	if (group_large(v, stack, 12))
+	if (group_b2(v, stack))
 		return (1);
-	if (group_small(v, stack, 5))
-		return (1);
-	if (group_small(v, stack, 4))
-		return (1);
-	if (group_small(v, stack, 1))
+	if (group_b3(v, stack))
 		return (1);
 	return (0);
 }
 
 int	group_c(t_vars *v, t_node *stack)
 {
-	if (group_large(v, stack, 9))
+	if (group_c1(v, stack))
 		return (1);
-	if (group_large(v, stack, 6))
+	if (group_c2(v, stack))
 		return (1);
-	if (group_small(v, stack, 3))
-		return (1);
-	if (group_small(v, stack, 2))
-		return (1);
-	if (group_small(v, stack, 0))
+	if (group_c3(v, stack))
 		return (1);
 	return (0);
 }

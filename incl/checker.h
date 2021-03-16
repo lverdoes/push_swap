@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/16 12:12:28 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/16 17:17:19 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,15 +122,22 @@ int		cmd_rrr(t_vars *v);
 int		group_large(t_vars *v, t_node *stack, double min);
 int		group_small(t_vars *v, t_node *stack, double min);
 int		group_a(t_vars *v, t_node *stack);
+int		group_a1(t_vars *v, t_node *stack);
 int		group_a2(t_vars *v, t_node *stack);
 int		group_a3(t_vars *v, t_node *stack);
 int		group_b(t_vars *v, t_node *stack);
 int		group_b1(t_vars *v, t_node *stack);
 int		group_b2(t_vars *v, t_node *stack);
 int		group_b3(t_vars *v, t_node *stack);
+int		group_b3a(t_vars *v, t_node *stack);
+int		group_b3b(t_vars *v, t_node *stack);
+int		group_b3c(t_vars *v, t_node *stack);
 int		group_c(t_vars *v, t_node *stack);
 int		group_c1(t_vars *v, t_node *stack);
 int		group_c2(t_vars *v, t_node *stack);
 int		group_c3(t_vars *v, t_node *stack);
+int		group_c3a(t_vars *v, t_node *stack);
+int		group_c3b(t_vars *v, t_node *stack);
+int		group_c3c(t_vars *v, t_node *stack);
 
 #endif

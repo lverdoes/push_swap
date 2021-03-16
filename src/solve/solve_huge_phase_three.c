@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/07 21:54:55 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/16 16:47:00 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/16 17:18:18 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	phase_three_b(t_vars *v, size_t * const i)
 {
-	if (group_small(v, v->b, 1))
+	if (group_b3c(v, v->b))
 		cmd_rb(v);
 	else
 	{
 		cmd_pa(v);
-		if (group_small(v, v->a, 5))
+		if (group_b3a(v, v->a))
 		{
-			if (group_small(v, v->b, 1))
+			if (group_b3c(v, v->b))
 			{
 				cmd_rr(v);
 				*i += 1;
@@ -34,14 +34,14 @@ static void	phase_three_b(t_vars *v, size_t * const i)
 
 static void	phase_three_c(t_vars *v, size_t * const i)
 {
-	if (group_small(v, v->b, 0))
+	if (group_c3c(v, v->b))
 		cmd_rb(v);
 	else
 	{
 		cmd_pa(v);
-		if (group_small(v, v->a, 3))
+		if (group_c3a(v, v->a))
 		{
-			if (group_small(v, v->b, 0))
+			if (group_c3c(v, v->b))
 			{
 				cmd_rr(v);
 				*i += 1;
