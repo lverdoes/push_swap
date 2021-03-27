@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 21:38:51 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 08:41:45 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/27 01:16:54 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ static int	rotate_direction(t_vars *v, size_t target)
 	return (1);
 }
 
-int	solve_medium(t_vars *v)
+int	solve_medium(t_vars *v, size_t limit)
 {
-	size_t	limit;
+	size_t	scope;
 	t_elem	*e;
 	int		rot;
 
 	while (v->size_a > MEDIUM)
 	{
 		e = v->a->content;
-		limit = find_lowest_rank(v->a) + LIMIT;
-		if (e->rank <= limit)
+		scope = find_lowest_rank(v->a) + limit;
+		if (e->rank <= scope)
 			cmd_pb(v);
 		rot = rotate_direction(v, find_lowest_rank(v->a));
 		if (rot == 1)

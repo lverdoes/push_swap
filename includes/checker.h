@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/16 20:12:36 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/27 16:43:49 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # define MEDIUM 15
 # define LARGE 45
 # define HUGE 150
-# define LIMIT 10
 
 typedef struct s_element
 {
@@ -64,12 +63,9 @@ size_t	find_lowest_rank(t_node *stack);
 /*		solve	*/
 int		solve(t_vars *v);
 int		solve_small(t_vars *v);
-int		solve_medium(t_vars *v);
+int		solve_medium(t_vars *v, size_t limit);
 int		solve_large(t_vars *v);
-void	split_large_thirds(t_vars *v);
 int		solve_huge(t_vars *v);
-void	phase_two(t_vars *v);
-void	phase_three(t_vars *v);
 
 /*		errors	*/
 void	ft_exit(char *str);
@@ -117,27 +113,5 @@ int		cmd_rr(t_vars *v);
 int		cmd_rra(t_vars *v);
 int		cmd_rrb(t_vars *v);
 int		cmd_rrr(t_vars *v);
-
-/*		groups	*/
-int		group_large(t_vars *v, t_node *stack, double min);
-int		group_small(t_vars *v, t_node *stack, double min);
-int		group_a(t_vars *v, t_node *stack);
-int		group_a1(t_vars *v, t_node *stack);
-int		group_a2(t_vars *v, t_node *stack);
-int		group_a3(t_vars *v, t_node *stack);
-int		group_b(t_vars *v, t_node *stack);
-int		group_b1(t_vars *v, t_node *stack);
-int		group_b2(t_vars *v, t_node *stack);
-int		group_b3(t_vars *v, t_node *stack);
-int		group_b3a(t_vars *v, t_node *stack);
-int		group_b3b(t_vars *v, t_node *stack);
-int		group_b3c(t_vars *v, t_node *stack);
-int		group_c(t_vars *v, t_node *stack);
-int		group_c1(t_vars *v, t_node *stack);
-int		group_c2(t_vars *v, t_node *stack);
-int		group_c3(t_vars *v, t_node *stack);
-int		group_c3a(t_vars *v, t_node *stack);
-int		group_c3b(t_vars *v, t_node *stack);
-int		group_c3c(t_vars *v, t_node *stack);
 
 #endif

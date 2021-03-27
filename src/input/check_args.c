@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 23:23:16 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/11 16:28:43 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/26 18:59:08 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@ static char	*append_to_str(char **array, char *str)
 	return (str);
 }
 
-void	check_args(t_args *a, int argc, char **argv)
+static char	*args_to_str(int argc, char **argv)
 {
-	int		i;
-	size_t	size;
-	char	**array;
 	char	*str;
+	char	**array;
+	size_t	size;
+	int		i;
 
-	if (argc < 2)
-		ft_exit(NULL);
 	str = NULL;
 	i = 1;
 	while (i < argc)
@@ -52,6 +50,16 @@ void	check_args(t_args *a, int argc, char **argv)
 		ft_free_array((void **)array, size);
 		i++;
 	}
+	return (str);
+}
+
+void	check_args(t_args *a, int argc, char **argv)
+{
+	char	*str;
+
+	if (argc < 2)
+		ft_exit(NULL);
+	str = args_to_str(argc, argv);
 	if (!str)
 		ft_exit(NULL);
 	a->args = ft_split_strchr(str, " ", &a->size);

@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/16 20:14:19 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/03/27 17:02:47 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME_2		=	push_swap
 
 LIBFT_DIR	=	libft/
 LIBFT		=	libft.a
-INCL_DIR	=	incl/
+INCL_DIR	=	includes/
 INCL		=	-I $(INCL_DIR) -I $(LIBFT_DIR)
 
 CC			=	gcc
@@ -47,17 +47,10 @@ SRC_FILES_2	=	main_push_swap.c \
 				solve/solve_small.c \
 				solve/solve_medium.c \
 				solve/solve_large.c \
-				solve/solve_large_utils.c \
 				solve/solve_huge.c \
-				solve/solve_huge_phase_two.c \
-				solve/solve_huge_phase_three.c \
 				sorting/rotation_order.c \
 				sorting/is_ordered.c \
 				sorting/find_high_low.c \
-				groups/groups.c \
-				groups/group_a.c \
-				groups/group_b.c \
-				groups/group_c.c \
 				$(COMMON_SRC)
 
 SRC_1 		=	$(addprefix $(SRC_DIR), $(SRC_FILES_1))
@@ -96,9 +89,8 @@ fclean: clean
 re: fclean all
 
 py: all
-	python3 ./tester/pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
+	python3 ./tester/pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
 
 arg: all
-#	@/bin/rm -rf $(OBJ_DIR)
 	@./push_swap $($@) | ./checker $($@)
 	@./push_swap $($@) | wc -l
