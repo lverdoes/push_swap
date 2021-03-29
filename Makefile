@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/27 17:02:47 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/03/29 23:45:49 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ INCL_DIR	=	includes/
 INCL		=	-I $(INCL_DIR) -I $(LIBFT_DIR)
 
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror -pedantic -O3 $(INCL)
+FLAGS		=	-Wall -Wextra -Werror -O3 $(INCL) $(UNUSED) 
+UNUSED		=	-Wno-unused-variable -Wno-unused-parameter -Wno-unused-function
 
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
@@ -33,6 +34,7 @@ COMMON_SRC	=	input/check_args.c \
 				cmds/reverse_rotate.c \
 				cmds/rotate.c \
 				cmds/swap.c \
+				print_stacks.c \
 				utils.c
 
 SRC_FILES_1	=	main_checker.c \
@@ -89,7 +91,7 @@ fclean: clean
 re: fclean all
 
 py: all
-	python3 ./tester/pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
+	python3 ./tester/pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
 
 arg: all
 	@./push_swap $($@) | ./checker $($@)

@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/27 16:43:49 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/28 17:11:26 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ typedef struct s_args
 	char	**args;
 	size_t	size;
 }	t_args;
+
+/*		output	*/
+void	print_stacks(t_vars *v, char *next_cmd);
 
 /*		input	*/
 void	check_args(t_args *a, int argc, char **argv);

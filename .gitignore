@@ -1,6 +1,7 @@
 checker
 push_swap
 obj/
+.vscode/
 
 # Prerequisites
 *.d

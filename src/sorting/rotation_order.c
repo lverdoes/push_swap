@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 19:26:47 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/05 18:00:33 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/29 21:30:24 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,13 @@ static int	keep_rotating_r(t_vars *v, t_node *stack)
 	return (1);
 }
 
+static size_t	stack_length(t_vars *v, t_node *stack)
+{
+	if (stack == v->a)
+		return (v->size_a);
+	return (v->size_b);
+}
+
 int	rotate_left_or_right(t_vars *v, t_node *stack)
 {
 	t_node	*tmp;
@@ -76,7 +83,7 @@ int	rotate_left_or_right(t_vars *v, t_node *stack)
 	size_t	mid;
 
 	counter = 0;
-	mid = ft_node_size(stack) / 2;
+	mid = stack_length(v, stack) / 2;
 	tmp = stack;
 	while (tmp)
 	{
