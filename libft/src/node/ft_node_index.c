@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_bubble_sort_str.c                               :+:    :+:            */
+/*   ft_node_index.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/05 21:10:38 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/04 01:03:40 by lverdoes      ########   odam.nl         */
+/*   Created: 2021/03/30 19:51:05 by lverdoes      #+#    #+#                 */
+/*   Updated: 2021/03/30 19:56:39 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bubble_sort_str(char **array, size_t *array_size)
+size_t	ft_node_index(t_node *start, t_node *node)
 {
-	size_t	i;
-	size_t	j;
-	size_t	size;
+	size_t	ret;
+	t_node	*tmp;
 
-	if (!array_size)
-		size = ft_array_size(array);
-	else
-		size = *array_size;
-	if (size < 2)
-		return ;
-	size -= 1;
-	i = 0;
-	while (i < size)
+	ret = 0;
+	tmp = start;
+	while (tmp)
 	{
-		j = 0;
-		while (j < size - i)
-		{
-			if (ft_strncmp(array[j], array[j + 1], ft_strlen(array[j]) + 1) > 0)
-				ft_swap(&array[j], &array[j + 1], sizeof(char *));
-			j++;
-		}
-		i++;
+		if (node == tmp)
+			break ;
+		ret++;
+		tmp = tmp->next;
 	}
+	return (ret);
 }

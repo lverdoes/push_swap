@@ -6,17 +6,13 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/28 19:48:09 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/04 15:12:16 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/02/26 15:50:25 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-**	ret 1 = desc
-**	ret -1 = asc
-**	ret 0 = unsorted
-**
 **	Checks if the list is sorted or not.
 **	If sorted in ascending order, -1 is returned.
 **	If data is equal or only list has size 1, -1 is returned.

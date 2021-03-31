@@ -4,6 +4,7 @@ libft.a
 .DS_Store
 main.c
 /utils
+/obj
 
 # Prerequisites
 *.d

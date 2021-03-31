@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/30 12:00:17 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/03/31 22:06:27 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME_2		=	push_swap
 LIBFT_DIR	=	libft/
 LIBFT		=	libft.a
 INCL_DIR	=	includes/
-INCL		=	-I $(INCL_DIR) -I $(LIBFT_DIR)
+INCL		=	-I $(INCL_DIR) -I $(LIBFT_DIR)$(INCL_DIR)
 
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror -O3 $(INCL) $(UNUSED)
@@ -50,6 +50,7 @@ SRC_FILES_2	=	main_push_swap.c \
 				solve/solve_medium.c \
 				solve/solve_large.c \
 				solve/solve_huge.c \
+				solve/solve_huge_new.c \
 				sorting/rotation_order.c \
 				sorting/is_ordered.c \
 				sorting/find_high_low.c \

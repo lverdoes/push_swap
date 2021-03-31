@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:12:42 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:37:30 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/11 17:32:08 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_node_merge(t_node **head, t_node *right, int (*cmp)())
 		else
 		{
 			tmp = right->next;
-			ft_node_insert_after(right, last_sorted);
+			ft_node_insert_after(head, right, last_sorted);
 			last_sorted = right;
 			right = tmp;
 		}

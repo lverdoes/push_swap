@@ -6,14 +6,14 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/27 23:36:17 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:37:40 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/06 11:19:13 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-**	Delete the complete linked list from memory. All nodes are set to NULL.
+**	Delete the complete linked list.
 **
 **	Example of a DEL() function with a struct t_var:
 **

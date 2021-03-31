@@ -6,29 +6,38 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/27 23:36:08 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/03 21:56:46 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/11 17:19:14 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static void	is_middle(t_node *node)
+{
+	node->prev->next = node->next;
+	node->next->prev = node->prev;
+}
+
+static void	is_last(t_node *node)
+{
+	node->prev->next = NULL;
+}
+
+static void	is_head(t_node **head, t_node *node)
+{
+	*head = node->next;
+	if (*head)
+		(*head)->prev = NULL;
+}
+
 void	ft_node_unlink(t_node **head, t_node *node)
 {
 	if (!node->prev)
-	{
-		*head = node->next;
-		if (*head)
-			(*head)->prev = NULL;
-	}
+		is_head(head, node);
 	else if (!node->next)
-	{
-		node->prev->next = NULL;
-	}
+		is_last(node);
 	else
-	{	
-		node->prev->next = node->next;
-		node->next->prev = node->prev;
-	}
+		is_middle(node);
 	node->prev = NULL;
 	node->next = NULL;
 }

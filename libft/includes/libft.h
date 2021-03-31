@@ -6,7 +6,7 @@
 /*   By: lverdoes <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 16:38:16 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/05 15:35:53 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/31 16:22:16 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ char	*ft_append(char *s1, const char *s2);
 size_t	ft_array_size(char **array);
 char	**ft_arraydup(char **array, size_t size);
 double	ft_atod(const char *str);
-int		ft_atoi_base(const char *str, const char *base);
 char	*ft_concat_array(char **array, char *delim);
 size_t	ft_counter(const char *s, const char *set);
 void	*ft_free_ptr(void *ptr);
@@ -125,11 +124,12 @@ void	ft_node_del_one(t_node *node, void (*del)(void *));
 t_node	*ft_node_dup(t_node *head, void *data_ref, \
 		int (*cmp)(), void *(*dup)(void *), void (*del)(void *));
 t_node	*ft_node_find(t_node *start, void *data_ref, int (*cmp)());
-void	ft_node_insert_after(t_node *node, t_node *after_this);
+void	ft_node_insert_after(t_node **head, t_node *node, t_node *after_this);
 void	ft_node_insert_before(t_node **head, t_node *node, t_node *before_this);
 void	ft_node_insert_sort(t_node **head, t_node *node, int (*cmp)());
 int		ft_node_is_sorted(t_node **head, int (*cmp)());
 void	ft_node_iter(t_node *node, void (*f)(void *));
+size_t	ft_node_index(t_node *start, t_node *node);
 void	ft_node_join(t_node *left, t_node *right);
 t_node	*ft_node_last(t_node *node);
 void	ft_node_merge(t_node **head, t_node *right, int (*cmp)());
@@ -142,22 +142,5 @@ size_t	ft_node_size(t_node *node);
 void	ft_node_sort(t_node *head, int (*cmp)());
 void	ft_node_unlink(t_node **head, t_node *node);
 void	ft_print_node_list(t_node *node, void (*print)());
-
-/*		./sort		*/
-
-typedef struct s_merge
-{
-	void	*array;
-	void	*left;
-	void	*right;
-	size_t	len_l;
-	size_t	len_r;
-	size_t	total_len;
-}	t_merge;
-
-void	ft_bubble_sort_int(int *array, size_t len);
-void	ft_bubble_sort_str(char **array, size_t *array_size);
-int		ft_merge_sort_int(int *array, size_t len);
-int		ft_merge_sort_str(char **array, size_t *array_size);
 
 #endif

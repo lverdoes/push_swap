@@ -6,7 +6,7 @@
 /*   By: lverdoes <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 11:48:01 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:07:45 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/30 19:58:11 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)s + i);
 		i++;
 	}
+	if (c == '\0')
+		return ((char *)s + i);
 	return (NULL);
 }

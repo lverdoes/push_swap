@@ -6,14 +6,15 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/04 13:12:33 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/10 11:38:45 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/03/31 16:36:21 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
-HEADERS = libft.h
 CC		= gcc
-FLAGS	= -Wall -Wextra -Werror -pedantic -I.
+FLAGS	= -Wall -Wextra -Werror -pedantic -I$(INCL)
+INCL	= includes/
+UNUSED	= -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function
 
 MANDATORY =	\
 	ft_memset.c \
@@ -63,12 +64,11 @@ LST = \
 	ft_lstnew.c \
 	ft_lstsize.c \
 
-EXT =	\
+EXT = \
 	ft_append.c \
 	ft_array_size.c \
 	ft_arraydup.c \
 	ft_atod.c \
-	ft_atoi_base.c \
 	ft_concat_array.c \
 	ft_counter.c \
 	ft_free_array.c \
@@ -106,6 +106,7 @@ NODE = \
 	ft_node_insert_sort.c \
 	ft_node_is_sorted.c \
 	ft_node_iter.c \
+	ft_node_index.c \
 	ft_node_join.c \
 	ft_node_last.c \
 	ft_node_merge.c \
@@ -118,19 +119,12 @@ NODE = \
 	ft_node_unlink.c \
 	ft_print_node_list.c
 
-SORT = \
-	ft_bubble_sort_int.c \
-	ft_bubble_sort_str.c \
-	ft_merge_sort_int.c \
-	ft_merge_sort_str.c
-
 SRC_DIRS = \
 	$(addprefix mandatory/, $(MANDATORY)) \
 	$(addprefix ext/, $(EXT)) \
 	$(addprefix gnl/, $(GNL)) \
 	$(addprefix lst/, $(LST)) \
-	$(addprefix node/, $(NODE)) \
-	$(addprefix sort/, $(SORT))
+	$(addprefix node/, $(NODE))
 
 OBJ_DIRS = \
 	obj \
@@ -138,37 +132,38 @@ OBJ_DIRS = \
 	obj/ext \
 	obj/gnl \
 	obj/lst \
-	obj/node \
-	obj/sort
-
-all: $(NAME)
+	obj/node
 
 SRC	= $(addprefix src/, $(SRC_DIRS))
 OBJ = $(SRC:src/%.c=obj/%.o)
 
+all: $(NAME)
+
 $(NAME): $(OBJ)
-	@ar rcs $(NAME) $?
+	@ar rcs $(NAME) $(OBJ)
+	@echo "Created $@\x1b[1A\x1b[M"
 
 obj/%.o: src/%.c
 	@mkdir -p $(OBJ_DIRS)
-	$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
+	@echo "Compiling $<\x1b[1A\x1b[1M"
 
 .PHONY:	clean fclean re
 
 clean:
-	@/bin/rm -f $(OBJ)
-	@/bin/rm -f .DS_Store
-	@/bin/rm -f a.out
+	@/bin/rm -rf $(OBJ_DIRS)
+	@echo "Deleted libft/obj files"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@/bin/rm -f *.a
-	@/bin/rm -rf $(OBJ_DIRS)
+	@/bin/rm -f .DS_Store
+	@echo "Deleted $(NAME)"
+	@echo ""
 
 re: fclean all
 
 main: all
 	$(CC) $(FLAGS) $(UNUSED) $(NAME) main.c utils/*.c
-	./a.out
+	@./a.out
 
 test: main

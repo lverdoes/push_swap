@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/16 08:58:49 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:27:55 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/31 22:16:55 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ static size_t	count_strings(const char *src, const char *set)
 		if (!ft_strchr(set, src[i]))
 		{
 			count++;
-			while (!ft_strchr(set, src[i]) && src[i] != '\0')
+			while (src[i] != '\0' && !ft_strchr(set, src[i]))
 				i++;
 		}
-		while (ft_strchr(set, src[i]))
+		while (src[i] != '\0' && ft_strchr(set, src[i]))
 			i++;
 	}
 	return (count);

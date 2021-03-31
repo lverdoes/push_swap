@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/27 23:35:52 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:39:32 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/03/08 18:55:45 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	ft_node_insert_before(t_node **head, t_node *node, t_node *before_this)
 {
+	if (!before_this)
+	{
+		ft_node_add_back(head, node);
+		return ;
+	}	
 	if (before_this == *head)
 	{
 		ft_node_add_front(head, node);
