@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 16:40:43 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 11:47:22 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/01 14:13:11 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	rra(t_vars *v)
 	t_node	*tmp;
 	t_node	*tmp_last;
 
+	v->data.rra++;
 	if (!v->a || !v->a->next)
 		return ;
 	tmp = v->last_a;
@@ -31,6 +32,7 @@ void	rrb(t_vars *v)
 	t_node	*tmp;
 	t_node	*tmp_last;
 
+	v->data.rrb++;
 	if (!v->b || !v->b->next)
 		return ;
 	tmp = v->last_b;
@@ -44,4 +46,7 @@ void	rrr(t_vars *v)
 {
 	rra(v);
 	rrb(v);
+	v->data.rrr++;
+	v->data.rra--;
+	v->data.rrb--;
 }

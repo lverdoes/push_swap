@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/28 14:28:25 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/28 17:50:04 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/01 14:31:25 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void	print_line(t_node *n_a, t_node *n_b)
+static void	print_line(t_node *n_a, t_node *n_b)
 {
 	t_elem	*a;
 	t_elem	*b;
@@ -55,5 +55,52 @@ void	print_stacks(t_vars *v, char *next_cmd)
 			n_b = n_b->next;
 		printf("\n");
 	}
-//	printf("\E[H\E[2J");
+}
+
+void	print_data(t_vars *v)
+{
+	int total_push;
+	int total_rots;
+	int total_swap;
+	int total;
+
+	total_push =
+	v->data.pa +
+	v->data.pb;
+
+	total_rots =
+	v->data.ra +
+	v->data.rb +
+	v->data.rr +
+	v->data.rra +
+	v->data.rrb +
+	v->data.rrr;
+
+	total_swap =
+	v->data.sa +
+	v->data.sb +
+	v->data.ss;
+
+	total = 
+	total_push +
+	total_rots +
+	total_swap;
+
+
+	printf("total=[%d]\n", total);
+	printf("pa  = [%d]\t[%5.2f%%]\n", v->data.pa, (float)v->data.pa / total * 100);
+	printf("pb  = [%d]\t[%5.2f%%]\n", v->data.pb, (float)v->data.pb / total * 100);
+	printf("ra  = [%d]\t[%5.2f%%]\n", v->data.ra, (float)v->data.ra / total * 100);
+	printf("rb  = [%d]\t[%5.2f%%]\n", v->data.rb, (float)v->data.rb / total * 100);
+	printf("rr  = [%d]\t[%5.2f%%]\n", v->data.rr, (float)v->data.rr / total * 100);
+	printf("rra = [%d]\t[%5.2f%%]\n", v->data.rra, (float)v->data.rra / total * 100);
+	printf("rrb = [%d]\t[%5.2f%%]\n", v->data.rrb, (float)v->data.rrb / total * 100);
+	printf("rrr = [%d]\t[%5.2f%%]\n", v->data.rrr, (float)v->data.rrr / total * 100);
+	printf("sa  = [%d]\t[%5.2f%%]\n", v->data.sa, (float)v->data.sa / total * 100);
+	printf("sb  = [%d]\t[%5.2f%%]\n", v->data.sb, (float)v->data.sb / total * 100);
+	printf("ss  = [%d]\t[%5.2f%%]\n", v->data.ss, (float)v->data.ss / total * 100);
+	printf("\n\n");
+	printf("push  = [%d]\t[%5.2f%%]\n", total_push, (float)total_push / total * 100);
+	printf("rots  = [%d]\t[%5.2f%%]\n", total_rots, (float)total_rots / total * 100);
+	printf("swap  = [%d]\t[%5.2f%%]\n", total_swap, (float)total_swap / total * 100);
 }

@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/31 22:32:01 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/04/01 13:29:49 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC_FILES_2	=	main_push_swap.c \
 				solve/solve_medium.c \
 				solve/solve_large.c \
 				solve/solve_huge.c \
+				solve/solve_huge_utils.c \
 				sorting/rotation_order.c \
 				sorting/is_ordered.c \
 				sorting/find_high_low.c \

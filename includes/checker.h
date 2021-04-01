@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/31 22:32:09 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/01 14:31:41 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,21 @@ typedef struct s_element
 	int		num;
 }	t_elem;
 
+typedef struct s_data
+{
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+	int	sa;
+	int	sb;
+	int	ss;
+}	t_data;
+
 typedef struct s_variables
 {
 	t_node	*a;
@@ -40,6 +55,7 @@ typedef struct s_variables
 	size_t	gr_c;
 	t_node	*last_a;
 	t_node	*last_b;
+	t_data	data;
 }	t_vars;
 
 typedef struct s_args
@@ -50,6 +66,7 @@ typedef struct s_args
 
 /*		output	*/
 void	print_stacks(t_vars *v, char *next_cmd);
+void	print_data(t_vars *v);
 
 /*		input	*/
 void	check_args(t_args *a, int argc, char **argv);
@@ -70,6 +87,11 @@ int		solve_small(t_vars *v);
 int		solve_medium(t_vars *v, size_t limit);
 int		solve_large(t_vars *v);
 int		solve_huge(t_vars *v);
+int		group_n(t_vars *v, t_node *stack, size_t low, size_t high);
+int		is_group_a(t_vars *v, t_node *stack);
+int		is_group_b(t_vars *v, t_node *stack);
+int		is_group_c(t_vars *v, t_node *stack);
+
 
 /*		errors	*/
 void	ft_exit(char *str);
@@ -85,9 +107,9 @@ int		rankcmp(int *ref, t_elem *e);
 int		finished(t_vars *v);
 
 /*		swap	*/
-void	sa(t_vars *v);
-void	sb(t_vars *v);
-void	ss(t_vars *v);
+int		sa(t_vars *v);
+int		sb(t_vars *v);
+int		ss(t_vars *v);
 
 /*		push	*/
 int		pa(t_vars *v);

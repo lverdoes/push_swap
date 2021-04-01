@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 16:40:27 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 10:53:36 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/01 14:13:19 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	pa(t_vars *v)
 {
 	t_node	*tmp;
 
+	v->data.pa++;
 	if (!v->b)
 		return (0);
 	tmp = v->b;
@@ -34,6 +35,7 @@ int	pb(t_vars *v)
 {
 	t_node	*tmp;
 
+	v->data.pb++;
 	if (!v->a)
 		return (0);
 	tmp = v->a;

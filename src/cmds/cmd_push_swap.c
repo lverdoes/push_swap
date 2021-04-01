@@ -6,20 +6,12 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/05 16:04:50 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/28 18:06:51 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/01 14:11:28 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include "unistd.h"
-
-// PINK = \x1b[35;01m
-// BLUE = \x1b[34;01m
-// YELLOW = \x1b[33;01m
-// GREEN = \x1b[32;01m
-// RED = \x1b[31;01m
-// WHITE = \x1b[31;37m
-// RESET = \x1b[0m
 
 int	cmd_sa(t_vars *v)
 {

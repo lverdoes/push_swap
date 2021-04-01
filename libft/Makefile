@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/04 13:12:33 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/31 16:36:21 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/04/01 16:15:25 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -146,7 +146,7 @@ $(NAME): $(OBJ)
 obj/%.o: src/%.c
 	@mkdir -p $(OBJ_DIRS)
 	@$(CC) $(FLAGS) -c $< -o $@
-	@echo "Compiling $<\x1b[1A\x1b[1M"
+	@echo "Compiling libft/$<\x1b[1A\x1b[1M"
 
 .PHONY:	clean fclean re
 
