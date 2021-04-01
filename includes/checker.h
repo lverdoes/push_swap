@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/01 14:31:41 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/01 17:50:14 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define MEDIUM 15
 # define LARGE 45
-# define HUGE 150
+# define HUGE 200
 
 typedef struct s_element
 {
@@ -88,6 +88,7 @@ int		solve_medium(t_vars *v, size_t limit);
 int		solve_large(t_vars *v);
 int		solve_huge(t_vars *v);
 int		group_n(t_vars *v, t_node *stack, size_t low, size_t high);
+int		is_group_x(t_vars *v, t_node *stack);
 int		is_group_a(t_vars *v, t_node *stack);
 int		is_group_b(t_vars *v, t_node *stack);
 int		is_group_c(t_vars *v, t_node *stack);

@@ -6,13 +6,13 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/28 14:28:25 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/01 14:31:25 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/01 18:32:02 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-#include <stdio.h>
 #include <unistd.h>
+#include <stdio.h>
 
 static void	print_line(t_node *n_a, t_node *n_b)
 {
@@ -42,7 +42,7 @@ void	print_stacks(t_vars *v, char *next_cmd)
 
 	n_a = v->a;
 	n_b = v->b;
-	usleep(80000);
+	usleep(800000);
 	printf("\E[H\E[2J");
 	printf("           stack A         stack B\n");
 	printf("cmd:[%s]\n", next_cmd);
@@ -55,6 +55,7 @@ void	print_stacks(t_vars *v, char *next_cmd)
 			n_b = n_b->next;
 		printf("\n");
 	}
+	printf("\n");
 }
 
 void	print_data(t_vars *v)
@@ -87,7 +88,7 @@ void	print_data(t_vars *v)
 	total_swap;
 
 
-	printf("total=[%d]\n", total);
+	printf("total=[%d]\n\n", total);
 	printf("pa  = [%d]\t[%5.2f%%]\n", v->data.pa, (float)v->data.pa / total * 100);
 	printf("pb  = [%d]\t[%5.2f%%]\n", v->data.pb, (float)v->data.pb / total * 100);
 	printf("ra  = [%d]\t[%5.2f%%]\n", v->data.ra, (float)v->data.ra / total * 100);
@@ -99,7 +100,7 @@ void	print_data(t_vars *v)
 	printf("sa  = [%d]\t[%5.2f%%]\n", v->data.sa, (float)v->data.sa / total * 100);
 	printf("sb  = [%d]\t[%5.2f%%]\n", v->data.sb, (float)v->data.sb / total * 100);
 	printf("ss  = [%d]\t[%5.2f%%]\n", v->data.ss, (float)v->data.ss / total * 100);
-	printf("\n\n");
+	printf("\n");
 	printf("push  = [%d]\t[%5.2f%%]\n", total_push, (float)total_push / total * 100);
 	printf("rots  = [%d]\t[%5.2f%%]\n", total_rots, (float)total_rots / total * 100);
 	printf("swap  = [%d]\t[%5.2f%%]\n", total_swap, (float)total_swap / total * 100);
