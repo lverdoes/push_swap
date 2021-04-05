@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 21:38:51 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/31 20:34:57 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/05 14:57:54 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	swap_routine_check(t_vars *v)
 
 	if (!v->b->next)
 		return (0);
-	target = find_highest_rank(v->b);
+	target = v->high_b;
 	first = v->b->content;
 	second = v->b->next->content;
 	if (first->rank + 1 == target && second->rank == target)
@@ -122,13 +122,13 @@ int	cmd_papa(t_vars *v)
 	{
 		if (swap_routine_check(v))
 			continue ;
-		rot = rotate_direction_b(v, find_highest_rank(v->b));
+		rot = rotate_direction_b(v, v->high_b);
 		if (rot == 1)
 			cmd_rrb(v);
 		else if (rot == -1)
 			cmd_rb(v);
 		e = v->b->content;
-		if (e->rank == find_highest_rank(v->b))
+		if (e->rank == v->high_b)
 			cmd_pa(v);
 	}
 	return (1);
@@ -143,10 +143,10 @@ int	solve_medium(t_vars *v, size_t limit)
 	while (v->size_a > MEDIUM)
 	{
 		e = v->a->content;
-		scope = find_lowest_rank(v->a) + limit;
+		scope = v->low_a + limit;
 		if (e->rank <= scope)
 			cmd_pb(v);
-		rot = rotate_direction(v, find_lowest_rank(v->a));
+		rot = rotate_direction(v, v->low_a);
 		if (rot == 1)
 			cmd_rra(v);
 		else if (rot == -1)

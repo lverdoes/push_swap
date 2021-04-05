@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 19:26:47 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/29 21:30:24 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/05 15:00:07 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	keep_rotating_rr(t_vars *v, t_node *node)
 
 	if (node == v->a)
 	{
-		target = find_lowest_rank(v->a);
+		target = v->low_a;
 		e = v->a->content;
 		while (e->rank != target)
 		{
@@ -29,7 +29,7 @@ static int	keep_rotating_rr(t_vars *v, t_node *node)
 	}
 	else
 	{
-		target = find_highest_rank(v->b);
+		target = v->high_b;
 		e = v->b->content;
 		while (e->rank != target)
 		{
@@ -47,7 +47,7 @@ static int	keep_rotating_r(t_vars *v, t_node *stack)
 
 	if (stack == v->a)
 	{
-		target = find_lowest_rank(v->a);
+		target = v->low_a;
 		e = v->a->content;
 		while (e->rank != target)
 		{
@@ -57,7 +57,7 @@ static int	keep_rotating_r(t_vars *v, t_node *stack)
 	}
 	else
 	{
-		target = find_highest_rank(v->b);
+		target = v->high_b;
 		e = v->b->content;
 		while (e->rank != target)
 		{
@@ -88,8 +88,8 @@ int	rotate_left_or_right(t_vars *v, t_node *stack)
 	while (tmp)
 	{
 		e = tmp->content;
-		if ((stack == v->a && e->rank == find_lowest_rank(stack)) || \
-			(stack == v->b && e->rank == find_highest_rank(stack)))
+		if ((stack == v->a && e->rank == v->low_a) || \
+			(stack == v->b && e->rank == v->high_b))
 		{
 			if (counter > mid)
 				break ;

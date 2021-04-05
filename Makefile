@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/04/01 18:26:28 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/04/05 15:27:18 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ COMMON_SRC	=	input/check_args.c \
 				cmds/rotate.c \
 				cmds/swap.c \
 				print_stacks.c \
+				sorting/find_high_low.c \
 				utils.c
 
 SRC_FILES_1	=	main_checker.c \
@@ -53,7 +54,6 @@ SRC_FILES_2	=	main_push_swap.c \
 				solve/solve_huge_utils.c \
 				sorting/rotation_order.c \
 				sorting/is_ordered.c \
-				sorting/find_high_low.c \
 				$(COMMON_SRC)
 
 SRC_1 		=	$(addprefix $(SRC_DIR), $(SRC_FILES_1))
@@ -92,7 +92,7 @@ fclean: clean
 re: fclean all
 
 py: all
-	python3 ./tester/pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
+	python3 ./tester/pyviz.py `ruby -e "puts (1..5000).to_a.shuffle.join(' ')"`
 
 arg: all
 	@./push_swap $($@) | ./checker $($@)

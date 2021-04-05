@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 18:18:28 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/30 11:59:49 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/05 14:55:51 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	solve_3(t_vars *v)
 	if (is_correct_rotation_order(v, 0))
 		return (rotate_left_or_right(v, v->a));
 	e = v->a->content;
-	if (e->rank == 1 + find_lowest_rank(v->a))
+	if (e->rank == 1 + v->low_a)
 		return (cmd_sa(v));
 	if (e->rank == find_highest_rank(v->a))
 	{
@@ -38,7 +38,7 @@ static int	solve_4_plus(t_vars *v)
 	if (is_correct_rotation_order(v, 0))
 		return (rotate_left_or_right(v, v->a));
 	e = v->a->content;
-	if (e->rank != find_lowest_rank(v->a))
+	if (e->rank != v->low_a)
 		rotate_left_or_right(v, v->a);
 	cmd_pb(v);
 	if (ft_node_size(v->a) == 3)
