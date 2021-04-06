@@ -6,51 +6,54 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/05 11:55:57 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:47:25 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/06 13:04:17 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-**	typedef struct	s_var{
-**		int			num;
-**		char		*str;
-**	}				t_var;
-**
-**	int		cmp_str(void *data_ref, t_var *var)
+**	typedef struct s_elem
 **	{
-**		return (ft_strcmp(data_ref, var->str));
+**		int num;
+**		char	*str;
+**	}	t_elem;
+**	
+**	void	print_elem(t_elem *e)
+**	{
+**		ft_putendl_fd(e->str, 1);
 **	}
 **	
-**	int		cmp_num(t_var *t1, t_var *t2)
+**	t_elem	*create_elem(int num, char *str)
 **	{
-**		return (t1->num - t2->num);
+**		t_elem	*e;
+**	
+**		e = ft_calloc(1, sizeof(t_elem));
+**		e->num = num;
+**		e->str = ft_strdup(str);
+**		return (e);
 **	}
 **	
-**	t_var	*dup_var(t_var *src)
+**	void	delete_elem(void *ptr)
 **	{
-**		t_var *dst;
+**		t_elem	*e;
+**	
+**		e = ptr;
+**		ft_free(e->str);
+**		ft_free(e);
+**	}
+**	
+**	void	*ft_dup(void *ptr)
+**	{
+**		t_elem	*dst;
+**		t_elem	*src;
 **		
-**		dst = ft_calloc(1, sizeof(t_var));
-**		dst->num = src->num;
-**		dst->str = ft_strdup(src->str);
-**		if (!dst->str)
-**			return (ft_free_ptr(dst));
+**		src = ptr;
+**		dst = create_elem(src->num, src->str);
+**		if (!dst)
+**			return (NULL);
 **		return (dst);
-**
-**	void	del_var(void *var)
-**	{
-**		t_var *tmp;
-**		
-**		tmp = var;
-**		free(tmp->str);
-**		free(tmp);
 **	}
-**
-**	Example: 
-**	t_node *dup = ft_node_dup(head, "Rigate", cmp_str, (void *)dup_var, del_var)
-**	will create a new list with only nodes where var->str is equal to "Rigate".
 */
 
 static t_node	*clean_up(t_node *dup_h, t_node *dup_c, void (*del)(void *))
@@ -61,8 +64,7 @@ static t_node	*clean_up(t_node *dup_h, t_node *dup_c, void (*del)(void *))
 	return (NULL);
 }
 
-t_node	*ft_node_dup(t_node *head, void *data_ref, \
-		int (*cmp)(), void *(*dup)(void *), void (*del)(void *))
+t_node	*ft_node_dup(t_node *head, void *(*dup)(void *), void (*del)(void *))
 {
 	t_node	*dup_head;
 	void	*dup_content;
@@ -73,16 +75,13 @@ t_node	*ft_node_dup(t_node *head, void *data_ref, \
 	tmp = head;
 	while (tmp)
 	{
-		if (!cmp(data_ref, tmp->content))
-		{
-			dup_content = dup(tmp->content);
-			if (!dup_content)
-				return (clean_up(dup_head, dup_content, del));
-			new = ft_node_new(dup_content);
-			if (!new)
-				return (clean_up(dup_head, dup_content, del));
-			ft_node_add_back(&dup_head, new);
-		}
+		dup_content = dup(tmp->content);
+		if (!dup_content)
+			return (clean_up(dup_head, dup_content, del));
+		new = ft_node_new(dup_content);
+		if (!new)
+			return (clean_up(dup_head, dup_content, del));
+		ft_node_add_back(&dup_head, new);
 		tmp = tmp->next;
 	}
 	return (dup_head);

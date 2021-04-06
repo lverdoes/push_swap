@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/27 23:36:08 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/11 17:19:14 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/06 16:00:33 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	is_head(t_node **head, t_node *node)
 		(*head)->prev = NULL;
 }
 
-void	ft_node_unlink(t_node **head, t_node *node)
+t_node	*ft_node_unlink(t_node **head, t_node *node)
 {
 	if (!node->prev)
 		is_head(head, node);
@@ -40,4 +40,5 @@ void	ft_node_unlink(t_node **head, t_node *node)
 		is_middle(node);
 	node->prev = NULL;
 	node->next = NULL;
+	return (node);
 }
