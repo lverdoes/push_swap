@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 21:38:51 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/15 14:12:38 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/15 14:15:11 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ static int	swap_routine_check(t_vars *v)
 					return (1);
 				}
 			}
-			cmd_sb(v);
 			cmd_pa(v);
 			cmd_pa(v);
+			cmd_sa(v);
 			return (1);
 		}
 		cmd_sb(v);
