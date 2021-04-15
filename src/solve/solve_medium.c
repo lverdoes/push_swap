@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 21:38:51 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/05 14:57:54 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/15 14:12:38 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,33 +25,31 @@ static int	swap_routine_check(t_vars *v)
 	target = v->high_b;
 	first = v->b->content;
 	second = v->b->next->content;
-	if (first->rank + 1 == target && second->rank == target)
+	if (second->rank == target)
 	{
-		if (v->b->next->next && v->b->next->next->next)
+		if (first->rank + 1 == target)
 		{
-			third = v->b->next->next->content;
-			fourth = v->b->next->next->next->content;
-			if (third->rank + 3 == target && fourth->rank + 2 == target)
+			if (v->b->next->next && v->b->next->next->next)
 			{
-				cmd_pa(v);
-				cmd_pa(v);
-				cmd_ss(v);
-				cmd_pa(v);
-				cmd_pa(v);
+				third = v->b->next->next->content;
+				fourth = v->b->next->next->next->content;
+				if (third->rank + 3 == target && fourth->rank + 2 == target)
+				{
+					cmd_pa(v);
+					cmd_pa(v);
+					cmd_ss(v);
+					cmd_pa(v);
+					cmd_pa(v);
+					return (1);
+				}
 			}
-			else
-			{
-				cmd_sb(v);
-				cmd_pa(v);
-				cmd_pa(v);
-			}
-		}
-		else
-		{
 			cmd_sb(v);
 			cmd_pa(v);
 			cmd_pa(v);
+			return (1);
 		}
+		cmd_sb(v);
+		cmd_pa(v);
 		return (1);
 	}
 	return (0);

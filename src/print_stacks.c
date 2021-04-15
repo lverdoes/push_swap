@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/28 14:28:25 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/01 18:32:02 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/15 14:01:06 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	print_data(t_vars *v)
 	total_swap;
 
 
-	printf("total=[%d]\n\n", total);
+	printf("\ntotal=[%d]\n\n", total);
 	printf("pa  = [%d]\t[%5.2f%%]\n", v->data.pa, (float)v->data.pa / total * 100);
 	printf("pb  = [%d]\t[%5.2f%%]\n", v->data.pb, (float)v->data.pb / total * 100);
 	printf("ra  = [%d]\t[%5.2f%%]\n", v->data.ra, (float)v->data.ra / total * 100);
