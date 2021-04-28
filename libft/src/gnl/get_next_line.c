@@ -6,12 +6,14 @@
 /*   By: lverdoes <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/04 15:51:49 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:35:57 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/07 12:31:32 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "ft_node.h"
 #include "libft.h"
+#include "ft_ext.h"
 #include <unistd.h>
 
 static int	free_node(t_node **head, t_node *node, int ret)
@@ -56,7 +58,10 @@ static int	read_file(int fd, t_fd *file)
 		return (-1);
 	ret = read(fd, buffer, BUFFER_SIZE);
 	if (ret < 0)
-		return (ft_free_int(buffer, -1));
+	{
+		ft_free(buffer);
+		return (-1);
+	}
 	buffer[ret] = '\0';
 	file->str = ft_append(file->str, buffer);
 	ft_free(buffer);
@@ -82,12 +87,12 @@ static t_node	*find_fd(t_node **head, t_node *node, int fd)
 	tmp->fd = fd;
 	tmp->str = ft_strdup("");
 	if (!tmp->str)
-		return (ft_free_ptr(tmp));
+		return (ft_free(tmp));
 	node = ft_node_new(tmp);
 	if (!node)
 	{
 		ft_free(tmp->str);
-		return (ft_free_ptr(tmp));
+		return (ft_free(tmp));
 	}
 	ft_node_add_front(head, node);
 	return (node);

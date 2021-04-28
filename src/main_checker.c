@@ -6,12 +6,14 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:23:36 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/15 14:07:06 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/27 18:11:10 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#include "get_next_line.h"
 #include "unistd.h"
+#include <stdlib.h>
 
 int	main(int argc, char **argv)
 {
@@ -33,7 +35,7 @@ int	main(int argc, char **argv)
 		if (*line != '\0')
 			read_instruction(&v, line);
 //		print_stacks(&v, line);
-		ft_free(line);
+		free(line);
 	}
 //	print_data(&v);
 	if (finished(&v))

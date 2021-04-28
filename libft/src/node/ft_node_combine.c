@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_node_merge.c                                    :+:    :+:            */
+/*   ft_node_combine.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:12:42 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/11 17:32:08 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/07 11:33:52 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_node.h"
 
 static void	add_remaining(t_node *left, t_node *right, t_node *last_sorted)
 {

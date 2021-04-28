@@ -6,12 +6,13 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/05 16:07:39 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 13:47:40 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/27 18:14:06 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include "unistd.h"
+#include "libft.h"
 
 int	cmd_ra(t_vars *v)
 {

@@ -6,11 +6,11 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/28 00:19:16 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:12:38 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/07 11:37:10 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_node.h"
 
 /*
 **	Return the node at index position number.

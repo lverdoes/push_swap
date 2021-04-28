@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   get_next_line.h                                    :+:    :+:            */
+/*   ft_dict_find.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/16 12:21:25 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:34:58 by lverdoes      ########   odam.nl         */
+/*   Created: 2021/04/07 08:13:32 by lverdoes      #+#    #+#                 */
+/*   Updated: 2021/04/09 15:33:13 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_dict.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 128
-# endif
-
-typedef struct s_fd
+t_dict	*ft_dict_find(t_dict *head, char *key)
 {
-	int		fd;
-	char	*str;
-}	t_fd;
+	int		i;
+	t_dict	*tmp;
 
-#endif
+	if (!key)
+		return (0);
+	i = 0;
+	tmp = head;
+	while (key[i])
+	{
+		if (tmp && tmp->dict[(unsigned char)key[i]])
+		{
+			tmp = tmp->dict[(unsigned char)key[i]];
+			i++;
+		}
+		else
+			return (0);
+	}
+	return (tmp);
+}

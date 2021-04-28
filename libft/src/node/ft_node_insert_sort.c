@@ -6,11 +6,11 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/01 08:31:48 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:12:05 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/07 11:35:41 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_node.h"
 
 void	ft_node_insert_sort(t_node **head, t_node *node, int (*cmp)())
 {

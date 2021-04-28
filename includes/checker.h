@@ -6,19 +6,18 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/05 14:04:32 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/27 18:08:06 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-# include "libft.h"
-#include <stdio.h>
-
 # define MEDIUM 15
 # define LARGE 45
 # define HUGE 200
+
+#include "ft_node.h"
 
 typedef struct s_element
 {

@@ -6,11 +6,12 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 19:46:11 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/08 13:02:47 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/27 18:10:11 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#include "libft.h"
 
 void	read_instruction(t_vars *v, char const *const line)
 {

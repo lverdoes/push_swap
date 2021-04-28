@@ -6,11 +6,11 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/27 23:36:08 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/06 16:00:33 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/07 11:37:53 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_node.h"
 
 static void	is_middle(t_node *node)
 {

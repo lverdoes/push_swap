@@ -6,17 +6,18 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/27 23:35:58 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:12:34 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/07 11:36:38 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_node.h"
+#include <stdlib.h>
 
 t_node	*ft_node_new(void *content)
 {
 	t_node	*new_node;
 
-	new_node = ft_calloc(1, sizeof(t_node));
+	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return (NULL);
 	new_node->content = content;

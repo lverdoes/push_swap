@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 20:21:32 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/10 13:44:43 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/27 18:12:25 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <unistd.h>
+#include "libft.h"
+#include "ft_ext.h"
 
 void	ft_exit(char *str)
 {

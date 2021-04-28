@@ -6,11 +6,11 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/05 11:14:55 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/06 11:14:11 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/07 11:37:16 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_node.h"
 
 /*
 **	Remove all nodes from the linked list that match DATA_REF,

@@ -6,11 +6,12 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:37:22 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/06 17:24:21 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/27 18:13:24 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#include "ft_ext.h"
 
 void	swap(t_elem *a, t_elem *b)
 {

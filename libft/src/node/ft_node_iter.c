@@ -6,11 +6,11 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/01 10:04:31 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/23 08:38:16 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/07 11:35:50 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_node.h"
 
 void	ft_node_iter(t_node *node, void (*f)(void *))
 {

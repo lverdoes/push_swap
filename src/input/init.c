@@ -6,11 +6,13 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 20:19:12 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/05 14:05:20 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/27 18:13:06 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#include "libft.h"
+#include <stdlib.h>
 
 void	free_sorted(t_node *node)
 {
@@ -23,8 +25,8 @@ void	free_sorted(t_node *node)
 		node = tmp;
 		tmp = tmp->next;
 		e = node->content;
-		ft_free(e);
-		ft_free(node);
+		free(e);
+		free(node);
 	}
 }
 

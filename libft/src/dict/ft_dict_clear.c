@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_lstfind.c                                       :+:    :+:            */
+/*   ft_dict_clear.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/24 17:38:32 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/05 08:25:57 by lverdoes      ########   odam.nl         */
+/*   Created: 2021/04/07 09:39:10 by lverdoes      #+#    #+#                 */
+/*   Updated: 2021/04/09 15:30:14 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_dict.h"
 
-t_list	*ft_lstfind(t_list *list, void *data_ref, int (*cmp)())
+static void	go_page(t_dict *dict, void (*del)(void *))
 {
-	while (list)
+	int	i;
+
+	i = 0;
+	while (i < PAGES)
 	{
-		if (!cmp(data_ref, list->content))
-			return (list);
-		list = list->next;
+		if (dict->dict[i])
+			go_page(dict->dict[i], del);
+		i++;
 	}
-	return (NULL);
+	ft_dict_del_one(dict, del);
+}
+
+void	ft_dict_clear(t_dict *head, void (*del)(void *))
+{
+	if (!head)
+		return ;
+	go_page(head, del);
 }

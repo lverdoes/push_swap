@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/28 14:28:25 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/15 14:01:06 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/27 18:09:49 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,20 @@ void	print_data(t_vars *v)
 	total_swap;
 
 
-	printf("\ntotal=[%d]\n\n", total);
-	printf("pa  = [%d]\t[%5.2f%%]\n", v->data.pa, (float)v->data.pa / total * 100);
-	printf("pb  = [%d]\t[%5.2f%%]\n", v->data.pb, (float)v->data.pb / total * 100);
-	printf("ra  = [%d]\t[%5.2f%%]\n", v->data.ra, (float)v->data.ra / total * 100);
-	printf("rb  = [%d]\t[%5.2f%%]\n", v->data.rb, (float)v->data.rb / total * 100);
-	printf("rr  = [%d]\t[%5.2f%%]\n", v->data.rr, (float)v->data.rr / total * 100);
-	printf("rra = [%d]\t[%5.2f%%]\n", v->data.rra, (float)v->data.rra / total * 100);
-	printf("rrb = [%d]\t[%5.2f%%]\n", v->data.rrb, (float)v->data.rrb / total * 100);
-	printf("rrr = [%d]\t[%5.2f%%]\n", v->data.rrr, (float)v->data.rrr / total * 100);
-	printf("sa  = [%d]\t[%5.2f%%]\n", v->data.sa, (float)v->data.sa / total * 100);
-	printf("sb  = [%d]\t[%5.2f%%]\n", v->data.sb, (float)v->data.sb / total * 100);
-	printf("ss  = [%d]\t[%5.2f%%]\n", v->data.ss, (float)v->data.ss / total * 100);
-	printf("\n");
-	printf("push  = [%d]\t[%5.2f%%]\n", total_push, (float)total_push / total * 100);
-	printf("rots  = [%d]\t[%5.2f%%]\n", total_rots, (float)total_rots / total * 100);
-	printf("swap  = [%d]\t[%5.2f%%]\n", total_swap, (float)total_swap / total * 100);
+	dprintf(2, "\ntotal=[%d]\n\n", total);
+	dprintf(2, "pa  = [%d]\t[%5.2f%%]\n", v->data.pa, (float)v->data.pa / total * 100);
+	dprintf(2, "pb  = [%d]\t[%5.2f%%]\n", v->data.pb, (float)v->data.pb / total * 100);
+	dprintf(2, "ra  = [%d]\t[%5.2f%%]\n", v->data.ra, (float)v->data.ra / total * 100);
+	dprintf(2, "rb  = [%d]\t[%5.2f%%]\n", v->data.rb, (float)v->data.rb / total * 100);
+	dprintf(2, "rr  = [%d]\t[%5.2f%%]\n", v->data.rr, (float)v->data.rr / total * 100);
+	dprintf(2, "rra = [%d]\t[%5.2f%%]\n", v->data.rra, (float)v->data.rra / total * 100);
+	dprintf(2, "rrb = [%d]\t[%5.2f%%]\n", v->data.rrb, (float)v->data.rrb / total * 100);
+	dprintf(2, "rrr = [%d]\t[%5.2f%%]\n", v->data.rrr, (float)v->data.rrr / total * 100);
+	dprintf(2, "sa  = [%d]\t[%5.2f%%]\n", v->data.sa, (float)v->data.sa / total * 100);
+	dprintf(2, "sb  = [%d]\t[%5.2f%%]\n", v->data.sb, (float)v->data.sb / total * 100);
+	dprintf(2, "ss  = [%d]\t[%5.2f%%]\n", v->data.ss, (float)v->data.ss / total * 100);
+	dprintf(2, "\n");
+	dprintf(2, "push  = [%d]\t[%5.2f%%]\n", total_push, (float)total_push / total * 100);
+	dprintf(2, "rots  = [%d]\t[%5.2f%%]\n", total_rots, (float)total_rots / total * 100);
+	dprintf(2, "swap  = [%d]\t[%5.2f%%]\n", total_swap, (float)total_swap / total * 100);
 }

@@ -6,11 +6,12 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/01 08:06:50 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:37:49 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/07 11:38:13 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "ft_node.h"
 
 /*
 **	Prints content of all nodes in a linked list. Specifics and format are

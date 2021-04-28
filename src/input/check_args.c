@@ -6,12 +6,12 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 23:23:16 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/31 22:14:38 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/27 18:11:43 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-#include <stdio.h>
+#include "ft_ext.h"
 
 static char	*append_to_str(char **array, char *str)
 {
@@ -46,8 +46,8 @@ static char	*args_to_str(int argc, char **argv)
 			i++;
 			continue ;
 		}
-		str = append_to_str(array, str);
-		ft_free_array((void **)array, size);
+		str = append_to_str(array, str);	
+		ft_free2((void **)array, size);
 		i++;
 	}
 	return (str);

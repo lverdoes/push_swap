@@ -6,11 +6,11 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/27 23:27:58 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:11:06 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/07 11:34:50 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_node.h"
 
 void	ft_node_add_back(t_node **head, t_node *new)
 {

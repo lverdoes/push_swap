@@ -6,11 +6,12 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/24 11:12:42 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/06 11:13:15 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/08 22:29:53 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "ft_ext.h"
 
 static size_t	get_magnitude(size_t num)
 {
@@ -47,7 +48,7 @@ void	ft_print_array(char **array)
 	size_t	len;
 	size_t	i;
 
-	len = ft_array_size(array);
+	len = ft_array_size((void **)array);
 	i = 0;
 	while (i < len)
 	{

@@ -6,11 +6,12 @@
 /*   By: lverdoes <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 08:22:37 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:09:43 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/07 11:54:58 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "stdlib.h"
 
 static size_t	get_start(char const *str, char c, size_t i)
 {
@@ -76,9 +77,9 @@ static char	**init_dst(char const *s, char c, size_t count, char **dst)
 			while (i > 0)
 			{
 				i--;
-				ft_free(dst[i]);
+				free(dst[i]);
 			}
-			ft_free(dst);
+			free(dst);
 			return (NULL);
 		}
 		i++;

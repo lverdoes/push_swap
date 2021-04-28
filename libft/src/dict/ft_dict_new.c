@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   cmd_rev_rot.c                                      :+:    :+:            */
+/*   ft_dict_new.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/03/05 16:06:46 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/27 18:13:58 by lverdoes      ########   odam.nl         */
+/*   Created: 2021/04/07 08:22:08 by lverdoes      #+#    #+#                 */
+/*   Updated: 2021/04/09 15:33:01 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-#include "unistd.h"
+#include "ft_dict.h"
 #include "libft.h"
 
-int	cmd_rra(t_vars *v)
+int	ft_dict_new(t_dict *head, char *key, void *content)
 {
-	ft_putendl_fd("rra", STDOUT_FILENO);
-	rra(v);
-	return (1);
-}
+	int		i;
+	t_dict	*tmp;
 
-int	cmd_rrb(t_vars *v)
-{
-	ft_putendl_fd("rrb", STDOUT_FILENO);
-	rrb(v);
-	return (1);
-}
-
-int	cmd_rrr(t_vars *v)
-{
-	ft_putendl_fd("rrr", STDOUT_FILENO);
-	rrr(v);
+	tmp = head;
+	i = 0;
+	while (key[i])
+	{
+		if (tmp->dict[(unsigned char)key[i]])
+		{
+			tmp = tmp->dict[(unsigned char)key[i]];
+			i++;
+		}
+		else
+		{
+			tmp->dict[(unsigned char)key[i]] = ft_calloc(1, sizeof(t_dict));
+			if (!tmp->dict[(unsigned char)key[i]])
+				return (-1);
+		}
+	}
+	if (tmp->content)
+		return (0);
+	tmp->content = content;
 	return (1);
 }

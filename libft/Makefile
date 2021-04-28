@@ -6,13 +6,13 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/04 13:12:33 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/04/01 16:15:57 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/04/09 15:45:12 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
 CC		= gcc
-FLAGS	= -Wall -Wextra -Werror -pedantic -I$(INCL)
+FLAGS	= -Wall -Wextra -Werror -I$(INCL) $(UNUSED)
 INCL	= includes/
 UNUSED	= -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function
 
@@ -52,18 +52,6 @@ MANDATORY =	\
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c
 
-LST = \
-	ft_lstadd_back.c \
-	ft_lstadd_front.c \
-	ft_lstclear.c \
-	ft_lstdelone.c \
-	ft_lstfind.c \
-	ft_lstiter.c \
-	ft_lstlast.c \
-	ft_lstmap.c \
-	ft_lstnew.c \
-	ft_lstsize.c \
-
 EXT = \
 	ft_append.c \
 	ft_array_size.c \
@@ -97,6 +85,7 @@ GNL = \
 NODE = \
 	ft_node_add_back.c \
 	ft_node_add_front.c \
+	ft_node_combine.c \
 	ft_node_del_all.c \
 	ft_node_del_one.c \
 	ft_node_dup.c \
@@ -109,7 +98,6 @@ NODE = \
 	ft_node_index.c \
 	ft_node_join.c \
 	ft_node_last.c \
-	ft_node_merge.c \
 	ft_node_new.c \
 	ft_node_number.c \
 	ft_node_remove_if.c \
@@ -119,20 +107,28 @@ NODE = \
 	ft_node_unlink.c \
 	ft_print_node_list.c
 
+DICT = \
+	ft_dict_clear.c \
+	ft_dict_del_one.c \
+	ft_dict_find.c \
+	ft_dict_new.c \
+	ft_dict_size_content.c \
+	ft_dict_size_page.c
+
 SRC_DIRS = \
 	$(addprefix mandatory/, $(MANDATORY)) \
 	$(addprefix ext/, $(EXT)) \
 	$(addprefix gnl/, $(GNL)) \
-	$(addprefix lst/, $(LST)) \
-	$(addprefix node/, $(NODE))
+	$(addprefix node/, $(NODE)) \
+	$(addprefix dict/, $(DICT))
 
 OBJ_DIRS = \
 	obj \
 	obj/mandatory \
 	obj/ext \
 	obj/gnl \
-	obj/lst \
-	obj/node
+	obj/node \
+	obj/dict
 
 SRC	= $(addprefix src/, $(SRC_DIRS))
 OBJ = $(SRC:src/%.c=obj/%.o)
@@ -152,10 +148,11 @@ obj/%.o: src/%.c
 
 clean:
 	@/bin/rm -rf $(OBJ_DIRS)
-	@echo "Deleted libft/obj files"
+	@echo "Deleted libft/obj"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
+	@/bin/rm -f a.out
 	@/bin/rm -f .DS_Store
 	@echo "Deleted $(NAME)"
 	@echo ""
@@ -163,7 +160,7 @@ fclean: clean
 re: fclean all
 
 main: all
-	$(CC) $(FLAGS) $(UNUSED) $(NAME) main.c utils/*.c
+	$(CC) $(FLAGS) $(UNUSED) $(NAME) main.c
 	@./a.out
 
 test: main
