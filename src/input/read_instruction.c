@@ -6,37 +6,38 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 19:46:11 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/27 18:10:11 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/30 15:41:57 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include "libft.h"
 
-void	read_instruction(t_vars *v, char const *const line)
+int	read_instruction(t_vars *v, char *line)
 {
+	if (v->opt.color)
+		return (read_color_instruction(v, line));
 	if (!ft_strncmp(line, "sa", 3))
-		sa(v);
+		return (sa(v));
 	else if (!ft_strncmp(line, "sb", 3))
-		sb(v);
+		return (sb(v));
 	else if (!ft_strncmp(line, "ss", 3))
-		ss(v);
+		return (ss(v));
 	else if (!ft_strncmp(line, "pa", 3))
-		pa(v);
+		return (pa(v));
 	else if (!ft_strncmp(line, "pb", 3))
-		pb(v);
+		return (pb(v));
 	else if (!ft_strncmp(line, "ra", 3))
-		ra(v);
+		return (ra(v));
 	else if (!ft_strncmp(line, "rb", 3))
-		rb(v);
+		return (rb(v));
 	else if (!ft_strncmp(line, "rr", 3))
-		rr(v);
+		return (rr(v));
 	else if (!ft_strncmp(line, "rra", 4))
-		rra(v);
+		return (rra(v));
 	else if (!ft_strncmp(line, "rrb", 4))
-		rrb(v);
+		return (rrb(v));
 	else if (!ft_strncmp(line, "rrr", 4))
-		rrr(v);
-	else
-		ft_exit("Error");
+		return (rrr(v));
+	return (ft_exit("Error instructions"));
 }

@@ -6,63 +6,72 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 23:23:16 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/27 18:11:43 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/30 17:08:38 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include "ft_ext.h"
+#include <stdlib.h>
 
 static char	*append_to_str(char **array, char *str)
 {
 	char	*substr;
 
-	substr = ft_concat_array(array, " ");
+	substr = ft_concat_array(array, SPACE);
 	check_malloc(substr);
-	str = ft_append(str, " ");
+	str = ft_append(str, SPACE);
 	check_malloc(str);
 	str = ft_append(str, substr);
 	check_malloc(str);
-	ft_free(substr);
+	free(substr);
 	return (str);
 }
 
-static char	*args_to_str(int argc, char **argv)
+static char	*args_to_str(int argc, char **argv, int i)
 {
 	char	*str;
 	char	**array;
 	size_t	size;
-	int		i;
 
 	str = NULL;
-	i = 1;
 	while (i < argc)
 	{
-		array = ft_split_strchr(argv[i], " ", &size);
+		array = ft_split_strchr(argv[i], SPACE, &size);
 		check_malloc(array);
 		if (size == 0)
 		{
-			ft_free(array);
+			free(array);
 			i++;
 			continue ;
 		}
-		str = append_to_str(array, str);	
+		str = append_to_str(array, str);
 		ft_free2((void **)array, size);
 		i++;
 	}
 	return (str);
 }
 
-void	check_args(t_args *a, int argc, char **argv)
+void	check_args(t_vars *v, int argc, char **argv)
 {
 	char	*str;
+	int		start;
 
 	if (argc < 2)
 		ft_exit(NULL);
-	str = args_to_str(argc, argv);
-	if (!str)
+	start = search_options(v, argc, argv);
+	str = NULL;
+	if (v->opt.file)
+		file_option(argv, start, &str);
+	else
+		str = args_to_str(argc, argv, start);
+	if (!argv[start])
 		ft_exit(NULL);
-	a->args = ft_split_strchr(str, " ", &a->size);
-	check_malloc(a->args);
-	ft_free(str);
+	if (!str)
+		ft_exit("Error !str");
+	if (v->opt.instr)
+		cmd_file_option(v, argv, start);
+	v->args.args = ft_split_strchr(str, SPLIT_CHARS, &v->args.size);
+	check_malloc(v->args.args);
+	free(str);
 }

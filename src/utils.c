@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:37:22 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/27 18:13:24 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/29 23:03:15 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	rankcmp(int *ref, t_elem *e)
 
 int	finished(t_vars *v)
 {
-	if (!v->b && ft_node_is_sorted(&v->a, intcmp) == -1)
+	if (!v->b.head && ft_node_is_sorted(&v->a.head, intcmp) == -1)
 		return (1);
 	return (0);
 }

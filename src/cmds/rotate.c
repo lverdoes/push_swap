@@ -6,43 +6,46 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 16:40:50 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/01 14:13:04 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/30 15:09:32 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ra(t_vars *v)
+int	ra(t_vars *v)
 {
 	t_node	*tmp;
 
 	v->data.ra++;
-	if (!v->a || !v->a->next)
-		return ;
-	tmp = v->a;
-	ft_node_unlink(&v->a, v->a);
-	ft_node_insert_after(&v->a, tmp, v->last_a);
-	v->last_a = tmp;
+	if (!v->a.head || !v->a.head->next)
+		return (0);
+	tmp = v->a.head;
+	ft_node_unlink(&v->a.head, v->a.head);
+	ft_node_insert_after(&v->a.head, tmp, v->a.tail);
+	v->a.tail = tmp;
+	return (1);
 }
 
-void	rb(t_vars *v)
+int	rb(t_vars *v)
 {
 	t_node	*tmp;
 
 	v->data.rb++;
-	if (!v->b || !v->b->next)
-		return ;
-	tmp = v->b;
-	ft_node_unlink(&v->b, v->b);
-	ft_node_insert_after(&v->b, tmp, v->last_b);
-	v->last_b = tmp;
+	if (!v->b.head || !v->b.head->next)
+		return (0);
+	tmp = v->b.head;
+	ft_node_unlink(&v->b.head, v->b.head);
+	ft_node_insert_after(&v->b.head, tmp, v->b.tail);
+	v->b.tail = tmp;
+	return (1);
 }
 
-void	rr(t_vars *v)
+int	rr(t_vars *v)
 {
 	ra(v);
 	rb(v);
 	v->data.rr++;
 	v->data.ra--;
 	v->data.rb--;
+	return (1);
 }

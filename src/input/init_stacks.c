@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 20:19:12 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/27 18:13:06 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/30 10:19:54 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	assign_rank(t_vars *v)
 	t_node	*node;
 	t_elem	*elem;
 
-	node = v->a;
+	node = v->a.head;
 	while (node)
 	{
 		elem = node->content;
@@ -61,12 +61,11 @@ static void	assign_rank(t_vars *v)
 	}
 }
 
-void	init(t_vars *v, size_t size, char **args)
+void	init_stacks(t_vars *v, size_t size, char **args)
 {
 	t_node	*new;
 	t_elem	*element;
 
-	ft_bzero(v, sizeof(t_vars));
 	while (size > 0)
 	{
 		size--;
@@ -78,12 +77,12 @@ void	init(t_vars *v, size_t size, char **args)
 		check_malloc(new);
 		element->num = ft_atoi(args[size]);
 		check_duplicate(v, element->num);
-		ft_node_add_front(&v->a, new);
+		ft_node_add_front(&v->a.head, new);
 	}
 	assign_rank(v);
 	free_sorted(v->sorted);
-	v->total_size = ft_node_size(v->a);
-	v->size_a = v->total_size;
+	v->total_size = ft_node_size(v->a.head);
+	v->a.size = v->total_size;
 	v->max_rank = v->total_size - 1;
-	v->last_a = ft_node_last(v->a);
+	v->a.tail = ft_node_last(v->a.head);
 }

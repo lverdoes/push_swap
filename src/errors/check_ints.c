@@ -1,17 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   check_duplicate.c                                  :+:    :+:            */
+/*   check_ints.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 19:39:45 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/04 01:27:12 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/30 18:56:19 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include "libft.h"
+#include "ft_ext.h"
+#include <limits.h>
+
+void	check_minmax_int(char *str)
+{
+	double	n;
+	long	min;
+
+	n = ft_atod(str);
+	if (n > INT_MAX)
+		ft_exit("Error");
+	min = INT_MIN;
+	if (n < min)
+		ft_exit("Error");
+}
+
+void	check_digits(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	if (str[i] == '-')
+		i++;
+	if (str[i] == '\0')
+		ft_exit("Error");
+	while (str[i] != '\0')
+	{
+		if (!ft_isdigit(str[i]))
+			ft_exit("Error");
+		i++;
+	}
+}
 
 static void	insert_sort(t_node **head, t_node *node, int (*cmp)())
 {

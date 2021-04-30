@@ -1,59 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   solve_medium.c                                     :+:    :+:            */
+/*   medium.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 21:38:51 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/28 18:02:35 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/30 19:00:31 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-static int	swap_routine_check(t_vars *v)
-{
-	t_elem	*first;
-	t_elem	*second;
-	t_elem	*third;
-	t_elem	*fourth;
-	size_t	target;
-
-	if (!v->b->next)
-		return (0);
-	target = v->high_b;
-	first = v->b->content;
-	second = v->b->next->content;
-	if (second->rank == target)
-	{
-		if (first->rank + 1 == target)
-		{
-			if (v->b->next->next && v->b->next->next->next)
-			{
-				third = v->b->next->next->content;
-				fourth = v->b->next->next->next->content;
-				if (third->rank + 3 == target && fourth->rank + 2 == target)
-				{
-					cmd_pa(v);
-					cmd_pa(v);
-					cmd_ss(v);
-					cmd_pa(v);
-					cmd_pa(v);
-					return (1);
-				}
-			}
-			cmd_pa(v);
-			cmd_pa(v);
-			cmd_sa(v);
-			return (1);
-		}
-		cmd_sb(v);
-		cmd_pa(v);
-		return (1);
-	}
-	return (0);
-}
 
 static int	rotate_direction_b(t_vars *v, size_t target)
 {
@@ -63,8 +20,8 @@ static int	rotate_direction_b(t_vars *v, size_t target)
 	t_elem	*e;
 
 	counter = 0;
-	mid = v->size_b / 2;
-	tmp = v->b;
+	mid = v->b.size / 2;
+	tmp = v->b.head;
 	e = tmp->content;
 	if (e->rank == target)
 		return (0);
@@ -91,8 +48,8 @@ static int	rotate_direction(t_vars *v, size_t target)
 	t_elem	*e;
 
 	counter = 0;
-	mid = v->size_a / 2;
-	tmp = v->a;
+	mid = v->a.size / 2;
+	tmp = v->a.head;
 	e = tmp->content;
 	if (e->rank == target)
 		return (0);
@@ -114,19 +71,19 @@ static int	rotate_direction(t_vars *v, size_t target)
 int	cmd_papa(t_vars *v)
 {
 	t_elem	*e;
-	int 	rot;
+	int		rot;
 
-	while (v->b)
+	while (v->b.head)
 	{
 		if (swap_routine_check(v))
 			continue ;
-		rot = rotate_direction_b(v, v->high_b);
+		rot = rotate_direction_b(v, v->b.high);
 		if (rot == 1)
 			cmd_rrb(v);
 		else if (rot == -1)
 			cmd_rb(v);
-		e = v->b->content;
-		if (e->rank == v->high_b)
+		e = v->b.head->content;
+		if (e->rank == v->b.high)
 			cmd_pa(v);
 	}
 	return (1);
@@ -138,13 +95,13 @@ int	solve_medium(t_vars *v, size_t limit)
 	t_elem	*e;
 	int		rot;
 
-	while (v->size_a > MEDIUM)
+	while (v->a.size > MEDIUM)
 	{
-		e = v->a->content;
-		scope = v->low_a + limit;
+		e = v->a.head->content;
+		scope = v->a.low + limit;
 		if (e->rank <= scope)
 			cmd_pb(v);
-		rot = rotate_direction(v, v->low_a);
+		rot = rotate_direction(v, v->a.low);
 		if (rot == 1)
 			cmd_rra(v);
 		else if (rot == -1)

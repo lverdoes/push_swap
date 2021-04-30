@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   solve_huge_utils.c                                 :+:    :+:            */
+/*   huge_utils.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/01 11:46:05 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/01 17:39:13 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/30 19:00:19 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int group_n(t_vars *v, t_node *stack, size_t low, size_t high)
+int	group_n(t_vars *v, t_node *stack, size_t low, size_t high)
 {
 	t_elem	*e;
 	double	top;

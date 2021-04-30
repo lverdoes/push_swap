@@ -1,0 +1,46 @@
+#	GIVE PROMPT BACK
+./checker
+./checker " "
+./checker ""
+./checker "" " "
+./checker "" " " ""
+
+#	ERROR
+./checker -
+./checker "-"
+
+#	ERROR	-	INT_MAX
+./checker -2147483649
+./checker 2147483648
+./checker 5000000000
+./checker -5000000000
+./checker 99999999999999999999999999999999999999999999999999999999
+./checker -99999999999999999999999999999999999999999999999999999999
+
+#	ERROR	-	DUPLICATE
+./checker 0 -0
+./checker 1 2 1 1
+./checker 1 2 3 -1
+
+#	VALID
+./checker -1 1
+./checker -2147483648
+./checker 2147483647
+
+
+#	TESTS WITH INSTRUCTIONS
+./checker 0 			valid instr. with spaces
+./checker 0 			invalid instr.
+./checker 0				rr rrr rrb rb pa
+./checker 0				pb rr rrr ra rra pb
+./checker 1 2 3 		pb pb pb ctrl+d
+
+
+
+
+
+
+
+
+./push_swap 0 1 2 | wc -l
+./push_swap 0 2 1 | wc -l

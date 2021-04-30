@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/27 18:08:06 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/30 20:05:03 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,25 @@
 # define LARGE 45
 # define HUGE 200
 
-#include "ft_node.h"
+# define SPACE " "
+# define SPLIT_CHARS " \n\t"
+
+# define FALSE 0
+# define TRUE 1
+
+# define COLOR_SA 		"\e[38;5;105msa\e[33;0m"
+# define COLOR_SB		"\e[38;5;46msb\e[33;0m"
+# define COLOR_SS 		"\e[38;5;51mss\e[33;0m"
+# define COLOR_PA 		"\e[38;5;196mpa\e[33;0m"
+# define COLOR_PB		"\e[38;5;190mpb\e[33;0m"
+# define COLOR_RA		"\e[38;5;214mra\e[33;0m"
+# define COLOR_RB		"\e[38;5;98mrb\e[33;0m"
+# define COLOR_RR		"\e[38;5;220mrr\e[33;0m"
+# define COLOR_RRA		"\e[38;5;205mrra\e[33;0m"
+# define COLOR_RRB		"\e[38;5;226mrrb\e[33;0m"
+# define COLOR_RRR		"\e[38;5;206mrrr\e[33;0m"
+
+# include "ft_node.h"
 
 typedef struct s_element
 {
@@ -40,63 +58,102 @@ typedef struct s_data
 	int	ss;
 }	t_data;
 
-typedef struct s_variables
-{
-	t_node	*a;
-	t_node	*b;
-	size_t	size_a;
-	size_t	size_b;
-	size_t	total_size;
-	t_node	*sorted;
-	size_t	max_rank;
-	size_t	gr_a;
-	size_t	gr_b;
-	size_t	gr_c;
-	t_node	*last_a;
-	t_node	*last_b;
-	size_t	low_a;
-	size_t	high_b;
-	t_data	data;
-}	t_vars;
-
 typedef struct s_args
 {
 	char	**args;
 	size_t	size;
 }	t_args;
 
-/*		output	*/
+typedef struct s_options
+{
+	int		color;		//-c	//display output in pretty colors
+	int		data;		//-d	//print data of instructions after sorting.
+	int		file;		//-f	//integer file. after options, argument is expected to be a file
+	int		help;		//-h	//show list of options and correct use. 	//var not really used
+	int		instr;		//-i	//cmd output file. after options, (2nd) argument is expected to be a file
+	int		instr_fd;
+	int		verbose;	//-v	//display stack after each instruction, not recommended for large input sets
+}	t_opt;
+
+typedef struct s_stack
+{
+	t_node	*head;
+	t_node	*tail;
+	size_t	size;
+	size_t	high;
+	size_t	low;
+}	t_stack;
+
+typedef struct s_variables
+{
+	t_stack	a;
+	t_stack	b;
+	size_t	total_size;
+	size_t	max_rank;
+	t_node	*sorted;
+	t_args	args;
+	t_opt	opt;
+	t_data	data;
+}	t_vars;
+
+/*		bonus	*/
 void	print_stacks(t_vars *v, char *next_cmd);
 void	print_data(t_vars *v);
+int		read_color_instruction(t_vars *v, char *line);
+int		option_help(t_vars *v);
+int		cmd_file_option(t_vars *v, char **argv, int start);
+int		file_option(char **argv, int start, char **str);
+int		search_options(t_vars *v, int argc, char **argv);
+int		get_option(t_vars *v, char *str);
 
 /*		input	*/
-void	check_args(t_args *a, int argc, char **argv);
-void	init(t_vars *v, size_t size, char **argv);
-void	read_instruction(t_vars *v, char const *const line);
+void	check_args(t_vars *v, int argc, char **argv);
+void	init_stacks(t_vars *v, size_t size, char **argv);
+int		read_instruction(t_vars *v, char *line);
 
 /*		sorting	*/
-int		rotate_left_or_right(t_vars *v, t_node *stack);
-int		is_correct_rotation_order(t_vars *v, int exception);
-int		is_ordered_a(t_vars *v, size_t len);
-int		is_ordered_b(t_vars *v, size_t len);
 size_t	find_highest_rank(t_node *stack);
 size_t	find_lowest_rank(t_node *stack);
+int		rotate_left_or_right(t_vars *v, t_node *stack);
+int		is_correct_rotation_order(t_vars *v);
 
-/*		solve	*/
-int		solve(t_vars *v);
+/*		solve_small	*/
 int		solve_small(t_vars *v);
+
+/*		solve_medium	*/
 int		solve_medium(t_vars *v, size_t limit);
+int		swap_routine_check(t_vars *v);
+
+/*		solve_large	*/
 int		solve_large(t_vars *v);
+void	split_large_part_1(t_vars *v);
+void	split_large_part_2(t_vars *v);
+void	split_large_part_3(t_vars *v);
+void	split_large_part_4(t_vars *v);
+void	split_large_part_5(t_vars *v);
+int		large_is_group_a(t_vars *v, t_node *stack);
+int		large_group_n(t_vars *v, t_node *stack, size_t num);
+
+/*		solve_huge	*/
 int		solve_huge(t_vars *v);
+void	split_huge_part_xabc(t_vars *v);
+void	split_huge_part_x(t_vars *v);
+void	split_huge_part_3(t_vars *v);
+void	split_huge_part_4(t_vars *v);
+void	split_huge_part_5(t_vars *v);
+void	split_huge_part_6(t_vars *v);
+void	split_huge_part_7(t_vars *v);
+void	split_huge_part_8(t_vars *v);
+void	split_huge_part_9(t_vars *v);
+void	split_huge_part_10(t_vars *v);
 int		group_n(t_vars *v, t_node *stack, size_t low, size_t high);
 int		is_group_x(t_vars *v, t_node *stack);
 int		is_group_a(t_vars *v, t_node *stack);
 int		is_group_b(t_vars *v, t_node *stack);
 int		is_group_c(t_vars *v, t_node *stack);
 
-
 /*		errors	*/
-void	ft_exit(char *str);
+int		ft_exit(char *str);
 void	check_minmax_int(char *str);
 void	check_malloc(void *ptr);
 void	check_digits(char *str);
@@ -118,14 +175,14 @@ int		pa(t_vars *v);
 int		pb(t_vars *v);
 
 /*		rotate	*/
-void	ra(t_vars *v);
-void	rb(t_vars *v);
-void	rr(t_vars *v);
+int		ra(t_vars *v);
+int		rb(t_vars *v);
+int		rr(t_vars *v);
 
 /*		reverse rotate	*/
-void	rra(t_vars *v);
-void	rrb(t_vars *v);
-void	rrr(t_vars *v);
+int		rra(t_vars *v);
+int		rrb(t_vars *v);
+int		rrr(t_vars *v);
 
 /*		call cmds	*/
 int		cmd_sa(t_vars *v);
