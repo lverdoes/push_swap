@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/28 14:28:25 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/30 15:56:19 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/05/01 00:25:42 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	print_stacks(t_vars *v, char *next_cmd)
 
 	n_a = v->a.head;
 	n_b = v->b.head;
-	usleep(500000);
+	usleep(420000);
 	printf("\E[H\E[2J");
 	printf("           stack A         stack B\n");
 	printf("cmd:[%s]\n", next_cmd);

@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 19:39:45 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/30 18:56:19 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/05/01 00:30:34 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	check_minmax_int(char *str)
 
 	n = ft_atod(str);
 	if (n > INT_MAX)
-		ft_exit("Error");
+		ft_exit(ERROR);
 	min = INT_MIN;
 	if (n < min)
-		ft_exit("Error");
+		ft_exit(ERROR);
 }
 
 void	check_digits(char *str)
@@ -36,11 +36,11 @@ void	check_digits(char *str)
 	if (str[i] == '-')
 		i++;
 	if (str[i] == '\0')
-		ft_exit("Error");
+		ft_exit(ERROR);
 	while (str[i] != '\0')
 	{
 		if (!ft_isdigit(str[i]))
-			ft_exit("Error");
+			ft_exit(ERROR);
 		i++;
 	}
 }
@@ -53,7 +53,7 @@ static void	insert_sort(t_node **head, t_node *node, int (*cmp)())
 	while (tmp)
 	{
 		if (cmp(node->content, tmp->content) == 0)
-			ft_exit("Error");
+			ft_exit(ERROR);
 		if (cmp(node->content, tmp->content) < 0)
 		{
 			ft_node_insert_before(head, node, tmp);

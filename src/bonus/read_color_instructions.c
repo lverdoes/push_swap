@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/30 15:42:59 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/30 15:43:07 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/05/01 00:29:16 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ int	read_color_instruction(t_vars *v, char *line)
 		return (rrb(v));
 	else if (!ft_strncmp(line, COLOR_RRR, ft_strlen(COLOR_RRR) + 1))
 		return (rrr(v));
-	return (ft_exit("Error instructions"));
+	return (ft_exit(ERROR));
 }

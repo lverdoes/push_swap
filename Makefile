@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/04/30 20:26:08 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/05/01 00:37:57 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,10 @@ OBJ_DIR		=	obj
 SUBO_DIR	=	obj/cmds obj/errors obj/groups obj/input obj/solve obj/sorting \
 				obj/bonus
 
-COMMON_SRC	=	input/check_args.c \
+FILE1		=	checker.c
+FILE2		=	input/check_args.c
+
+COMMON_SRC	=	$(FILE2) \
 				errors/check_ints.c \
 				errors/exit.c \
 				input/init_stacks.c \
@@ -38,7 +41,7 @@ COMMON_SRC	=	input/check_args.c \
 				bonus/read_color_instructions.c \
 				utils.c
 
-SRC_F_CH	=	checker.c \
+SRC_F_CH	=	$(FILE1) \
 				input/read_instruction.c \
 				$(COMMON_SRC)
 
@@ -66,13 +69,13 @@ SRC_F_BO	=	\
 
 SRC_CH 		=	$(addprefix $(SRC_DIR)/, $(SRC_F_CH))
 SRC_PS 		=	$(addprefix $(SRC_DIR)/, $(SRC_F_PS))
-SRC_BO	 	=	$(addprefix $(SRC_DIR)/, $(SRC_F_BO))
 OBJ_CH 		=	$(SRC_CH:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 OBJ_PS 		=	$(SRC_PS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
-OBJ_BO 		=	$(SRC_BO:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
 ifeq ($(BONUS),1)
-	COMMON_SRC += SRC_F_BO
+	COMMON_SRC += $(SRC_F_BO)
+	FILE1 = checker_bonus.c
+	FILE2 = input/check_args_bonus.c
 endif
 
 all: $(CH) $(PS)
@@ -101,13 +104,13 @@ clean:
 
 fclean: clean
 	/bin/rm -f $(PS) $(CH)
-##	/bin/rm -f $(LIBFT)
+	/bin/rm -f $(LIBFT)
 	make fclean -C $(LIBFT_DIR)
 
 re: fclean all
 
-bonus:
-	BONUS=1
+bonus: all
+	@$(MAKE) all -e BONUS=1
 
 py: all
 	python3 pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`

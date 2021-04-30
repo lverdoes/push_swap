@@ -6,13 +6,14 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 20:21:32 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/30 18:52:10 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/05/01 00:30:23 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "checker.h"
+#include "libft.h"
 #include <stdlib.h>
 #include <unistd.h>
-#include "libft.h"
 
 int	ft_exit(char *str)
 {
@@ -25,5 +26,5 @@ int	ft_exit(char *str)
 void	check_malloc(void *ptr)
 {
 	if (!ptr)
-		ft_exit("Error");
+		ft_exit(ERROR);
 }

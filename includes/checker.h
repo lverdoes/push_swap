@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/30 20:05:03 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/05/01 00:50:14 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,26 @@
 # define MEDIUM 15
 # define LARGE 45
 # define HUGE 200
+# define BONUS 0
 
 # define SPACE " "
 # define SPLIT_CHARS " \n\t"
+# define ERROR "Error"
 
 # define FALSE 0
 # define TRUE 1
 
-# define COLOR_SA 		"\e[38;5;105msa\e[33;0m"
-# define COLOR_SB		"\e[38;5;46msb\e[33;0m"
-# define COLOR_SS 		"\e[38;5;51mss\e[33;0m"
-# define COLOR_PA 		"\e[38;5;196mpa\e[33;0m"
-# define COLOR_PB		"\e[38;5;190mpb\e[33;0m"
-# define COLOR_RA		"\e[38;5;214mra\e[33;0m"
-# define COLOR_RB		"\e[38;5;98mrb\e[33;0m"
-# define COLOR_RR		"\e[38;5;220mrr\e[33;0m"
-# define COLOR_RRA		"\e[38;5;205mrra\e[33;0m"
-# define COLOR_RRB		"\e[38;5;226mrrb\e[33;0m"
-# define COLOR_RRR		"\e[38;5;206mrrr\e[33;0m"
+# define COLOR_SA 	"\e[38;5;105msa\e[33;0m"
+# define COLOR_SB	"\e[38;5;46msb\e[33;0m"
+# define COLOR_SS 	"\e[38;5;51mss\e[33;0m"
+# define COLOR_PA 	"\e[38;5;196mpa\e[33;0m"
+# define COLOR_PB	"\e[38;5;190mpb\e[33;0m"
+# define COLOR_RA	"\e[38;5;214mra\e[33;0m"
+# define COLOR_RB	"\e[38;5;98mrb\e[33;0m"
+# define COLOR_RR	"\e[38;5;220mrr\e[33;0m"
+# define COLOR_RRA	"\e[38;5;205mrra\e[33;0m"
+# define COLOR_RRB	"\e[38;5;226mrrb\e[33;0m"
+# define COLOR_RRR	"\e[38;5;206mrrr\e[33;0m"
 
 # include "ft_node.h"
 
@@ -56,6 +58,10 @@ typedef struct s_data
 	int	sa;
 	int	sb;
 	int	ss;
+	int	total_push;
+	int	total_rots;
+	int	total_swap;
+	int	total;
 }	t_data;
 
 typedef struct s_args
@@ -66,13 +72,13 @@ typedef struct s_args
 
 typedef struct s_options
 {
-	int		color;		//-c	//display output in pretty colors
-	int		data;		//-d	//print data of instructions after sorting.
-	int		file;		//-f	//integer file. after options, argument is expected to be a file
-	int		help;		//-h	//show list of options and correct use. 	//var not really used
-	int		instr;		//-i	//cmd output file. after options, (2nd) argument is expected to be a file
+	int		color;
+	int		data;
+	int		file;
+	int		help;
+	int		instr;
 	int		instr_fd;
-	int		verbose;	//-v	//display stack after each instruction, not recommended for large input sets
+	int		verbose;
 }	t_opt;
 
 typedef struct s_stack
@@ -100,9 +106,9 @@ typedef struct s_variables
 void	print_stacks(t_vars *v, char *next_cmd);
 void	print_data(t_vars *v);
 int		read_color_instruction(t_vars *v, char *line);
-int		option_help(t_vars *v);
+int		option_help(void);
 int		cmd_file_option(t_vars *v, char **argv, int start);
-int		file_option(char **argv, int start, char **str);
+int		file_option(t_vars *v, char **argv, int start, char **str);
 int		search_options(t_vars *v, int argc, char **argv);
 int		get_option(t_vars *v, char *str);
 
