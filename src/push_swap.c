@@ -6,13 +6,14 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 22:00:06 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/30 17:06:06 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/05/01 18:33:20 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include "libft.h"
 #include "ft_ext.h"
+#include <stdlib.h>
 
 static int	solve(t_vars *v)
 {
@@ -37,5 +38,6 @@ int	main(int argc, char **argv)
 	if (!v.opt.instr)
 		v.opt.instr_fd = 1;
 	solve(&v);
+	exit(0);
 	return (0);
 }

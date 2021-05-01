@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/05/01 00:37:57 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/05/01 18:32:53 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,10 +91,10 @@ $(LIBFT):
 	mv $(LIBFT_DIR)/$(LIBFT) .
 
 $(CH): $(LIBFT) $(OBJ_CH)
-	$(CC) $(FLAGS) -o $(CH) $(LIBFT) $(OBJ_CH)
+	$(CC) $(FLAGS) -o $(CH) $(OBJ_CH) $(LIBFT)
 
 $(PS): $(LIBFT) $(OBJ_PS)
-	$(CC) $(FLAGS) -o $(PS) $(LIBFT) $(OBJ_PS)
+	$(CC) $(FLAGS) -o $(PS) $(OBJ_PS) $(LIBFT)
 
 .PHONY: clean fclean re
 
