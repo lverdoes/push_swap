@@ -6,46 +6,55 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 16:40:50 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/30 15:09:32 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/03 23:30:48 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
+
+static void	update_pos(size_t *const pos, size_t size)
+{
+	if (*pos == 0)
+		*pos = size - 1;
+	else
+		*pos -= 1;
+}
+
+static int	rotate(t_stack *s)
+{
+	t_list	*tmp;
+
+	if (s->size < 2)
+		return (1);
+	tmp = s->head;
+	ft_list_unlink(&s->head, s->head);
+	ft_list_insert_after(&s->head, tmp, s->tail);
+	s->tail = tmp;
+	update_pos(&s->pos_high, s->size);
+	update_pos(&s->pos_low, s->size);
+	return (0);
+}
 
 int	ra(t_vars *v)
 {
-	t_node	*tmp;
-
-	v->data.ra++;
-	if (!v->a.head || !v->a.head->next)
-		return (0);
-	tmp = v->a.head;
-	ft_node_unlink(&v->a.head, v->a.head);
-	ft_node_insert_after(&v->a.head, tmp, v->a.tail);
-	v->a.tail = tmp;
-	return (1);
+	v->data.count[RA]++;
+	rotate(&v->a);
+	return (0);
 }
 
 int	rb(t_vars *v)
 {
-	t_node	*tmp;
-
-	v->data.rb++;
-	if (!v->b.head || !v->b.head->next)
-		return (0);
-	tmp = v->b.head;
-	ft_node_unlink(&v->b.head, v->b.head);
-	ft_node_insert_after(&v->b.head, tmp, v->b.tail);
-	v->b.tail = tmp;
-	return (1);
+	v->data.count[RB]++;
+	rotate(&v->b);
+	return (0);
 }
 
 int	rr(t_vars *v)
 {
+	v->data.count[RR]++;
+	v->data.count[RA]--;
+	v->data.count[RB]--;
 	ra(v);
 	rb(v);
-	v->data.rr++;
-	v->data.ra--;
-	v->data.rb--;
-	return (1);
+	return (0);
 }

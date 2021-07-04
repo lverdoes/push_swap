@@ -6,40 +6,53 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 16:39:50 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/29 23:23:21 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/03 23:31:27 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
+#include "ft_ext.h"
+
+static void	update_pos(size_t *const pos)
+{
+	if (*pos == 0)
+		*pos = 1;
+	else if (*pos == 1)
+		*pos = 0;
+}
+
+static int	swap(t_stack *s)
+{
+	if (s->size < 2)
+		return (1);
+	ft_swap(s->head->content, s->head->next->content, sizeof(void *));
+	if (s->size == 2)
+		s->tail = ft_list_last(s->head);
+	update_pos(&s->pos_high);
+	update_pos(&s->pos_low);
+	return (0);
+}
 
 int	sa(t_vars *v)
 {
-	v->data.sa++;
-	if (!v->a.head || !v->a.head->next)
-		return (0);
-	swap(v->a.head->content, v->a.head->next->content);
-	if (ft_node_size(v->a.head) == 2)
-		v->a.tail = ft_node_last(v->a.head);
-	return (1);
+	v->data.count[SA]++;
+	swap(&v->a);
+	return (0);
 }
 
 int	sb(t_vars *v)
 {
-	v->data.sb++;
-	if (!v->b.head || !v->b.head->next)
-		return (0);
-	swap(v->b.head->content, v->b.head->next->content);
-	if (ft_node_size(v->b.head) == 2)
-		v->b.tail = ft_node_last(v->b.head);
-	return (1);
+	v->data.count[SB]++;
+	swap(&v->b);
+	return (0);
 }
 
 int	ss(t_vars *v)
 {
+	v->data.count[SS]++;
+	v->data.count[SA]--;
+	v->data.count[SB]--;
 	sa(v);
 	sb(v);
-	v->data.ss++;
-	v->data.sa--;
-	v->data.sb--;
-	return (1);
+	return (0);
 }

@@ -6,14 +6,19 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/07 11:25:02 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/08 23:40:16 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/04 09:35:19 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_EXT_H
 # define FT_EXT_H
 
+# define FALSE 0
+# define TRUE !0
+
 # include <stddef.h>
+
+typedef int	t_bool;
 
 char	*ft_append(char *s1, const char *s2);
 size_t	ft_array_size(void **array);
@@ -22,8 +27,7 @@ double	ft_atod(const char *str);
 char	*ft_concat_array(char **array, char *delim);
 size_t	ft_counter(const char *s, const char *set);
 void	*ft_free(void *ptr);
-int		ft_free1(void *ptr);
-int		ft_free2(void **array, size_t i);
+void	*ft_free_array(void **array, size_t i);
 int		*ft_intdup(int *src, size_t len);
 int		ft_iswhitespace(int c);
 void	ft_print_array(char **array);

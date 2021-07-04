@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/03 01:36:58 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/09 13:04:55 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/05/27 17:06:23 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	ft_unique_chars(const char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (tab[(int)str[i]] > 0)
+		if (tab[(unsigned char)str[i]] > 0)
 			return (0);
-		tab[(int)str[i]]++;
+		tab[(unsigned char)str[i]]++;
 		i++;
 	}
 	return (1);

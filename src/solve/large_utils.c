@@ -6,117 +6,37 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/30 09:13:21 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/30 09:15:35 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/03 15:09:34 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-void	split_large_part_5(t_vars *v)
+int	large_group_n(t_vars *v, t_list *stack, size_t num)
 {
-	while (!large_group_n(v, v->b.head, 6))
-	{
-		if (large_group_n(v, v->b.head, 1))
-			cmd_rb(v);
-		else
-		{
-			cmd_pa(v);
-			if (large_group_n(v, v->a.head, 11))
-			{
-				if (large_group_n(v, v->b.head, 1))
-					cmd_rr(v);
-				else
-					cmd_ra(v);
-			}
-		}
-	}
+	t_elem	*e;
+	double	top;
+	double	bottom;
+
+	e = stack->content;
+	top = (double)v->total_size / 11 * num;
+	bottom = (double)v->total_size / 11 * (num - 1);
+	if (e->rank < top && e->rank >= bottom)
+		return (1);
+	return (0);
 }
 
-void	split_large_part_4(t_vars *v)
+int	large_is_group_a(t_vars *v, t_list *stack)
 {
-	while (!large_group_n(v, v->a.head, 8))
-	{
-		if (large_group_n(v, v->a.head, 10))
-			cmd_ra(v);
-		else
-		{
-			cmd_pb(v);
-			if (large_group_n(v, v->b.head, 2))
-			{
-				if (large_group_n(v, v->a.head, 10))
-					cmd_rr(v);
-				else
-					cmd_rb(v);
-			}
-		}
-	}
-}
-
-void	split_large_part_3(t_vars *v)
-{
-	while (!large_is_group_a(v, v->a.head))
-	{
-		if (large_group_n(v, v->a.head, 9))
-			cmd_ra(v);
-		else
-		{
-			cmd_pb(v);
-			if (large_group_n(v, v->b.head, 3))
-			{
-				if (large_group_n(v, v->a.head, 9))
-					cmd_rr(v);
-				else
-					cmd_rb(v);
-			}
-		}
-	}
-}
-
-void	split_large_part_2(t_vars *v)
-{
-	while (!large_group_n(v, v->b.head, 5))
-	{
-		if (large_group_n(v, v->b.head, 4))
-			cmd_rb(v);
-		else
-		{
-			cmd_pa(v);
-			if (large_group_n(v, v->a.head, 8))
-			{
-				if (large_group_n(v, v->b.head, 4))
-					cmd_rr(v);
-				else
-					cmd_ra(v);
-			}
-		}
-	}
-}
-
-void	split_large_part_1(t_vars *v)
-{
-	size_t	i;
-	size_t	size;
-
-	i = 0;
-	size = v->a.size;
-	while (i < size)
-	{
-		if (large_is_group_a(v, v->a.head))
-			cmd_ra(v);
-		else
-		{
-			cmd_pb(v);
-			if (large_group_n(v, v->b.head, 5))
-			{
-				if (large_is_group_a(v, v->a.head))
-				{
-					cmd_rr(v);
-					i++;
-				}
-				else
-					cmd_rb(v);
-			}
-		}
-		i++;
-	}
+	if (large_group_n(v, stack, 1))
+		return (1);
+	if (large_group_n(v, stack, 2))
+		return (1);
+	if (large_group_n(v, stack, 7))
+		return (1);
+	if (large_group_n(v, stack, 10))
+		return (1);
+	if (large_group_n(v, stack, 11))
+		return (1);
+	return (0);
 }

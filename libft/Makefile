@@ -6,15 +6,15 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/04 13:12:33 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/04/09 15:45:12 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/07/03 15:33:50 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
-CC		= gcc
-FLAGS	= -Wall -Wextra -Werror -I$(INCL) $(UNUSED)
-INCL	= includes/
+FLAGS	= -Wall -Wextra -Werror
+STRICT	= -std=c99 -pedantic
 UNUSED	= -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function
+INCL	= includes
 
 MANDATORY =	\
 	ft_memset.c \
@@ -59,7 +59,7 @@ EXT = \
 	ft_atod.c \
 	ft_concat_array.c \
 	ft_counter.c \
-	ft_free_array.c \
+	ft_free.c \
 	ft_intdup.c \
 	ft_iswhitespace.c \
 	ft_print_array.c \
@@ -79,56 +79,56 @@ EXT = \
 	ft_unique_chars.c
 
 GNL = \
-	ft_getline.c \
+	ft_getfile.c \
 	get_next_line.c
 
-NODE = \
-	ft_node_add_back.c \
-	ft_node_add_front.c \
-	ft_node_combine.c \
-	ft_node_del_all.c \
-	ft_node_del_one.c \
-	ft_node_dup.c \
-	ft_node_find.c \
-	ft_node_insert_after.c \
-	ft_node_insert_before.c \
-	ft_node_insert_sort.c \
-	ft_node_is_sorted.c \
-	ft_node_iter.c \
-	ft_node_index.c \
-	ft_node_join.c \
-	ft_node_last.c \
-	ft_node_new.c \
-	ft_node_number.c \
-	ft_node_remove_if.c \
-	ft_node_remove_one.c \
-	ft_node_size.c \
-	ft_node_sort.c \
-	ft_node_unlink.c \
-	ft_print_node_list.c
+LIST = \
+	ft_list_add_back.c \
+	ft_list_add_front.c \
+	ft_list_combine.c \
+	ft_list_del_all.c \
+	ft_list_del_one.c \
+	ft_list_dup.c \
+	ft_list_find.c \
+	ft_list_insert_after.c \
+	ft_list_insert_before.c \
+	ft_list_insert_sort.c \
+	ft_list_is_sorted.c \
+	ft_list_iter.c \
+	ft_list_index.c \
+	ft_list_join.c \
+	ft_list_last.c \
+	ft_list_new.c \
+	ft_list_number.c \
+	ft_list_remove_if.c \
+	ft_list_remove_one.c \
+	ft_list_size.c \
+	ft_list_sort.c \
+	ft_list_unlink.c \
+	ft_list_print.c
 
-DICT = \
-	ft_dict_clear.c \
-	ft_dict_del_one.c \
-	ft_dict_find.c \
-	ft_dict_new.c \
-	ft_dict_size_content.c \
-	ft_dict_size_page.c
+TRIE = \
+	ft_trie_clear.c \
+	ft_trie_del_one.c \
+	ft_trie_find.c \
+	ft_trie_new.c \
+	ft_trie_size_content.c \
+	ft_trie_size_nodes.c
 
 SRC_DIRS = \
 	$(addprefix mandatory/, $(MANDATORY)) \
 	$(addprefix ext/, $(EXT)) \
 	$(addprefix gnl/, $(GNL)) \
-	$(addprefix node/, $(NODE)) \
-	$(addprefix dict/, $(DICT))
+	$(addprefix list/, $(LIST)) \
+	$(addprefix trie/, $(TRIE))
 
 OBJ_DIRS = \
 	obj \
 	obj/mandatory \
 	obj/ext \
 	obj/gnl \
-	obj/node \
-	obj/dict
+	obj/list \
+	obj/trie
 
 SRC	= $(addprefix src/, $(SRC_DIRS))
 OBJ = $(SRC:src/%.c=obj/%.o)
@@ -141,7 +141,7 @@ $(NAME): $(OBJ)
 
 obj/%.o: src/%.c
 	@mkdir -p $(OBJ_DIRS)
-	@$(CC) $(FLAGS) -c $< -o $@
+	@gcc $(FLAGS) $(STRICT) -I$(INCL) -c $< -o $@ 
 	@echo "Compiling libft/$<\x1b[1A\x1b[1M"
 
 .PHONY:	clean fclean re
@@ -159,8 +159,6 @@ fclean: clean
 
 re: fclean all
 
-main: all
-	$(CC) $(FLAGS) $(UNUSED) $(NAME) main.c
+test: re all
+	gcc $(FLAGS) $(UNUSED) -I$(INCL) main.c $(NAME)
 	@./a.out
-
-test: main

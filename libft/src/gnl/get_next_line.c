@@ -3,35 +3,35 @@
 /*                                                        ::::::::            */
 /*   get_next_line.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lverdoes <marvin@codam.nl>                   +#+                     */
+/*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/04 15:51:49 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/07 12:31:32 by lverdoes      ########   odam.nl         */
+/*   Created: 2021/05/26 13:11:35 by lverdoes      #+#    #+#                 */
+/*   Updated: 2021/05/26 13:11:41 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "ft_node.h"
+#include "ft_list.h"
 #include "libft.h"
 #include "ft_ext.h"
 #include <unistd.h>
 
-static int	free_node(t_node **head, t_node *node, int ret)
+static int	free_list(t_list **head, t_list *list, int ret)
 {
 	t_fd	*file;
 
-	if (node->prev)
-		node->prev->next = node->next;
-	if (node->next)
-		node->next->prev = node->prev;
-	if (node == *head && !node->next)
+	if (list->prev)
+		list->prev->next = list->next;
+	if (list->next)
+		list->next->prev = list->prev;
+	if (list == *head && !list->next)
 		*head = NULL;
-	else if (node == *head && node->next)
-		*head = node->next;
-	file = node->content;
+	else if (list == *head && list->next)
+		*head = list->next;
+	file = list->content;
 	ft_free(file->str);
 	ft_free(file);
-	ft_free(node);
+	ft_free(list);
 	return (ret);
 }
 
@@ -55,31 +55,31 @@ static int	read_file(int fd, t_fd *file)
 
 	buffer = ft_calloc((size_t)BUFFER_SIZE + 1, sizeof(char));
 	if (!buffer)
-		return (-1);
+		return (GNL_ERROR);
 	ret = read(fd, buffer, BUFFER_SIZE);
 	if (ret < 0)
 	{
 		ft_free(buffer);
-		return (-1);
+		return (GNL_ERROR);
 	}
 	buffer[ret] = '\0';
 	file->str = ft_append(file->str, buffer);
 	ft_free(buffer);
 	if (!file->str)
-		return (-1);
+		return (GNL_ERROR);
 	return (ret);
 }
 
-static t_node	*find_fd(t_node **head, t_node *node, int fd)
+static t_list	*find_fd(t_list **head, t_list *list, int fd)
 {
 	t_fd	*tmp;
 
-	while (node)
+	while (list)
 	{
-		tmp = node->content;
+		tmp = list->content;
 		if (tmp->fd == fd)
-			return (node);
-		node = node->next;
+			return (list);
+		list = list->next;
 	}
 	tmp = ft_calloc(1, sizeof(t_fd));
 	if (!tmp)
@@ -88,39 +88,39 @@ static t_node	*find_fd(t_node **head, t_node *node, int fd)
 	tmp->str = ft_strdup("");
 	if (!tmp->str)
 		return (ft_free(tmp));
-	node = ft_node_new(tmp);
-	if (!node)
+	list = ft_list_new(tmp);
+	if (!list)
 	{
 		ft_free(tmp->str);
 		return (ft_free(tmp));
 	}
-	ft_node_add_front(head, node);
-	return (node);
+	ft_list_add_front(head, list);
+	return (list);
 }
 
 int	get_next_line(int fd, char **line)
 {
-	static t_node	*head = NULL;
+	static t_list	*head = NULL;
 	int				ret;
-	t_node			*node;
+	t_list			*list;
 	t_fd			*file;
 
 	if (fd < 0 || read(fd, 0, 0) < 0 || BUFFER_SIZE < 1 || !line)
-		return (-1);
-	node = find_fd(&head, head, fd);
-	if (!node)
-		return (-1);
-	file = node->content;
+		return (GNL_ERROR);
+	list = find_fd(&head, head, fd);
+	if (!list)
+		return (GNL_ERROR);
+	file = list->content;
 	ret = 1;
 	while (ret > 0 && !ft_strchr(file->str, '\n'))
 		ret = read_file(fd, file);
 	if (ret < 0)
-		return (free_node(&head, node, -1));
+		return (free_list(&head, list, GNL_ERROR));
 	*line = ft_substr(file->str, 0, ft_substrlen(file->str, "\n"));
 	if (!*line)
-		return (free_node(&head, node, -1));
+		return (free_list(&head, list, GNL_ERROR));
 	file->str = reset_ptr(file->str);
-	if (ret == 0)
-		return (free_node(&head, node, 0));
-	return (1);
+	if (ret == GNL_END)
+		return (free_list(&head, list, GNL_END));
+	return (GNL_LINE);
 }

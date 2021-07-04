@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/16 08:58:49 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/07 12:27:40 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/06/08 13:02:26 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	init_dst(char **dst, const char *src, const char *set, size_t size)
 		len = get_len(src, set, start);
 		dst[i] = ft_substr(src, start, len);
 		if (!dst[i])
-			return (ft_free2((void **)dst, i));
+			return ((int)ft_free_array((void **)dst, i));
 		i++;
 	}
 	return (1);

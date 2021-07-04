@@ -6,39 +6,119 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/08 15:35:30 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/30 17:33:32 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/03 17:52:28 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-int	large_group_n(t_vars *v, t_node *stack, size_t num)
+void	split_large_part_5(t_vars *v)
 {
-	t_elem	*e;
-	double	top;
-	double	bottom;
-
-	e = stack->content;
-	top = (double)v->total_size / 11 * num;
-	bottom = (double)v->total_size / 11 * (num - 1);
-	if (e->rank < top && e->rank >= bottom)
-		return (1);
-	return (0);
+	while (!large_group_n(v, v->b.head, 6))
+	{
+		if (large_group_n(v, v->b.head, 1))
+			cmd(RB, 1);
+		else
+		{
+			cmd(PA, 1);
+			if (large_group_n(v, v->a.head, 11))
+			{
+				if (large_group_n(v, v->b.head, 1))
+					cmd(RR, 1);
+				else
+					cmd(RA, 1);
+			}
+		}
+	}
 }
 
-int	large_is_group_a(t_vars *v, t_node *stack)
+void	split_large_part_4(t_vars *v)
 {
-	if (large_group_n(v, stack, 1))
-		return (1);
-	if (large_group_n(v, stack, 2))
-		return (1);
-	if (large_group_n(v, stack, 7))
-		return (1);
-	if (large_group_n(v, stack, 10))
-		return (1);
-	if (large_group_n(v, stack, 11))
-		return (1);
-	return (0);
+	while (!large_group_n(v, v->a.head, 8))
+	{
+		if (large_group_n(v, v->a.head, 10))
+			cmd(RA, 1);
+		else
+		{
+			cmd(PB, 1);
+			if (large_group_n(v, v->b.head, 2))
+			{
+				if (large_group_n(v, v->a.head, 10))
+					cmd(RR, 1);
+				else
+					cmd(RB, 1);
+			}
+		}
+	}
+}
+
+void	split_large_part_3(t_vars *v)
+{
+	while (!large_is_group_a(v, v->a.head))
+	{
+		if (large_group_n(v, v->a.head, 9))
+			cmd(RA, 1);
+		else
+		{
+			cmd(PB, 1);
+			if (large_group_n(v, v->b.head, 3))
+			{
+				if (large_group_n(v, v->a.head, 9))
+					cmd(RR, 1);
+				else
+					cmd(RB, 1);
+			}
+		}
+	}
+}
+
+void	split_large_part_2(t_vars *v)
+{
+	while (!large_group_n(v, v->b.head, 5))
+	{
+		if (large_group_n(v, v->b.head, 4))
+			cmd(RB, 1);
+		else
+		{
+			cmd(PA, 1);
+			if (large_group_n(v, v->a.head, 8))
+			{
+				if (large_group_n(v, v->b.head, 4))
+					cmd(RR, 1);
+				else
+					cmd(RA, 1);
+			}
+		}
+	}
+}
+
+void	split_large_part_1(t_vars *v)
+{
+	size_t	i;
+	size_t	size;
+
+	i = 0;
+	size = v->a.size;
+	while (i < size)
+	{
+		if (large_is_group_a(v, v->a.head))
+			cmd(RA, 1);
+		else
+		{
+			cmd(PB, 1);
+			if (large_group_n(v, v->b.head, 5))
+			{
+				if (large_is_group_a(v, v->a.head))
+				{
+					cmd(RR, 1);
+					i++;
+				}
+				else
+					cmd(RB, 1);
+			}
+		}
+		i++;
+	}
 }
 
 int	solve_large(t_vars *v)

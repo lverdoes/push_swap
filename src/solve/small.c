@@ -1,60 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   solve_small.c                                      :+:    :+:            */
+/*   small.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 18:18:28 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/29 23:49:16 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/04 10:17:15 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 static int	solve_3(t_vars *v)
 {
-	t_elem	*e;
-
-	if (is_correct_rotation_order(v))
-		return (rotate_left_or_right(v, v->a.head));
-	e = v->a.head->content;
-	if (e->rank == 1 + v->a.low)
-		return (cmd_sa(v));
-	if (e->rank == find_highest_rank(v->a.head))
+	if (is_correct_rotation_order(&v->a))				//	1 2 3,	2 3 1,	3 1 2
+		return (shortest_path(&v->a, v->a.pos_low, 0));
+	if (v->a.pos_low == 1)								//	2 1 3
 	{
-		cmd_sa(v);
-		return (cmd_rra(v));
+		cmd(SA, 1);
 	}
-	cmd_sa(v);
-	cmd_ra(v);
-	return (cmd_papa(v));
+	else if (v->a.pos_low == 2)							//	3 2 1
+	{
+		cmd(SA, 1);
+		cmd(RRA, 1);
+	}
+	else												//	1 3 2
+	{
+		cmd(SA, 1);
+		cmd(RA, 1);
+	}
+	return (0);
 }
 
 static int	solve_4_plus(t_vars *v)
 {
-	t_elem	*e;
-
-	if (is_correct_rotation_order(v))
-		return (rotate_left_or_right(v, v->a.head));
-	e = v->a.head->content;
-	if (e->rank != v->a.low)
-		rotate_left_or_right(v, v->a.head);
-	cmd_pb(v);
-	if (v->a.size == 3)
-		solve_3(v);
-	else
-		solve_4_plus(v);
-	return (cmd_papa(v));
+	if (is_correct_rotation_order(&v->a))
+		return (shortest_path(&v->a, v->a.pos_low, 0));
+	while (v->a.size > 3)
+	{
+		shortest_path(&v->a, v->a.pos_low, 0);
+		cmd(PB, 1);
+	}
+	solve_3(v);
+	return (push_back(v));
 }
 
 int	solve_small(t_vars *v)
 {
-	if (finished(v))
-		return (1);
 	if (v->a.size > 3)
 		return (solve_4_plus(v));
 	if (v->a.size == 3)
 		return (solve_3(v));
-	return (cmd_sa(v));
+	if (v->a.pos_low == 1)
+		cmd(SA, 1);
+	return (0);
 }

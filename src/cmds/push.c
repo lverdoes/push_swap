@@ -6,70 +6,102 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 16:40:27 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/30 08:22:27 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/04 00:29:51 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
+#include <limits.h>
 
-static void	update_high_low(t_vars *v)
+static void	update_pos(t_stack *src, t_stack *dst)
 {
 	t_elem	*e;
 
-	if (v->a.head)
+	e = dst->head->content;
+	if (e->rank > dst->high)
 	{
-		e = v->a.head->content;
-		if (e->rank < v->a.low)
-			v->a.low = e->rank;
-		if (e->rank == v->b.high)
-			v->b.high = find_highest_rank(v->b.head);
+		dst->high = e->rank;
+		dst->pos_high = 0;
+		dst->pos_low++;
 	}
-	if (v->b.head)
+	else if (e->rank < dst->low)
 	{
-		e = v->b.head->content;
-		if (e->rank > v->b.high)
-			v->b.high = e->rank;
-		if (e->rank == v->a.low)
-			v->a.low = find_lowest_rank(v->a.head);
+		dst->low = e->rank;
+		dst->pos_low = 0;
+		dst->pos_high++;
 	}
+	else
+	{
+		dst->pos_high++;
+		dst->pos_low++;
+	}
+	if (src->head)
+	{
+		if (e->rank == src->high)
+		{
+			find_highest_rank(src);
+			src->pos_low--;
+		}
+		else if (e->rank == src->low)
+		{
+			find_lowest_rank(src);
+			src->pos_high--;
+		}
+		else
+		{
+			src->pos_high--;
+			src->pos_low--;
+		}
+	}
+	else
+	{
+		src->pos_high = 0;
+		src->pos_low = 0;
+		src->low = INT_MAX;
+		src->high = 0;
+	}
+}
+
+static t_list	*pop(t_stack *src)
+{
+	t_list	*pop;
+
+	if (src->size == 0)
+		return (NULL);
+	pop = ft_list_unlink(&src->head, src->head);
+	src->size -= 1;
+	if (!src->head)
+		src->tail = NULL;
+	return (pop);
+}
+
+static void	push(t_stack *src, t_stack *dst, t_list *tmp)
+{
+	ft_list_add_front(&dst->head, tmp);
+	dst->size += 1;
+	if (!dst->head->next)
+		dst->tail = dst->head;
+	update_pos(src, dst);
 }
 
 int	pa(t_vars *v)
 {
-	t_node	*tmp;
+	t_list	*tmp;
 
-	v->data.pa++;
-	if (!v->b.head)
-		return (0);
-	tmp = v->b.head;
-	ft_node_unlink(&v->b.head, v->b.head);
-	ft_node_add_front(&v->a.head, tmp);
-	v->b.size -= 1;
-	v->a.size += 1;
-	if (!v->b.head)
-		v->b.tail = NULL;
-	if (!v->a.head->next)
-		v->a.tail = v->a.head;
-	update_high_low(v);
-	return (1);
+	v->data.count[PA]++;
+	tmp = pop(&v->b);
+	if (tmp)
+		push(&v->b, &v->a, tmp);
+	return (0);
 }
 
 int	pb(t_vars *v)
 {
-	t_node	*tmp;
+	t_list	*tmp;
 
-	v->data.pb++;
-	if (!v->a.head)
-		return (0);
-	tmp = v->a.head;
-	ft_node_unlink(&v->a.head, v->a.head);
-	ft_node_add_front(&v->b.head, tmp);
-	v->a.size -= 1;
-	v->b.size += 1;
-	if (!v->a.head)
-		v->a.tail = NULL;
-	if (!v->b.head->next)
-		v->b.tail = v->b.head;
-	update_high_low(v);
-	return (1);
+	v->data.count[PB]++;
+	tmp = pop(&v->a);
+	if (tmp)
+		push(&v->a, &v->b, tmp);
+	return (0);
 }

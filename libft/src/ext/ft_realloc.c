@@ -6,23 +6,12 @@
 /*   By: lverdoes <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 14:17:12 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/09 00:27:17 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/06/08 13:03:54 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_ext.h"
-
-static void	**free_array(void **dst, size_t i)
-{
-	while (i > 0)
-	{
-		i--;
-		ft_free(dst[i]);
-	}
-	ft_free(dst);
-	return (NULL);
-}
 
 static void	copy_ptrs(void **dst, void **src, size_t size)
 {

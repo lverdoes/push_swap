@@ -6,18 +6,16 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 22:00:06 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/05/01 18:33:20 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/04 00:30:31 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 #include "libft.h"
-#include "ft_ext.h"
-#include <stdlib.h>
 
 static int	solve(t_vars *v)
 {
-	if (finished(v))
+	if (finished(&v->a, &v->b))
 		return (1);
 	if (v->total_size > HUGE)
 		return (solve_huge(v));
@@ -34,10 +32,7 @@ int	main(int argc, char **argv)
 
 	ft_bzero(&v, sizeof(t_vars));
 	check_args(&v, argc, argv);
-	init_stacks(&v, v.args.size, v.args.args);
-	if (!v.opt.instr)
-		v.opt.instr_fd = 1;
+	init(&v, v.args.size, v.args.args);
 	solve(&v);
-	exit(0);
-	return (0);
+	return (ft_exit(NULL));
 }

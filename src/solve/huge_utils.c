@@ -6,13 +6,13 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/01 11:46:05 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/30 19:00:19 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/03 15:10:13 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-int	group_n(t_vars *v, t_node *stack, size_t low, size_t high)
+int	group_n(t_vars *v, t_list *stack, size_t low, size_t high)
 {
 	t_elem	*e;
 	double	top;
@@ -26,7 +26,7 @@ int	group_n(t_vars *v, t_node *stack, size_t low, size_t high)
 	return (0);
 }
 
-int	is_group_x(t_vars *v, t_node *stack)
+int	is_group_x(t_vars *v, t_list *stack)
 {
 	if (group_n(v, stack, 10, 10))
 		return (1);
@@ -39,7 +39,7 @@ int	is_group_x(t_vars *v, t_node *stack)
 	return (0);
 }
 
-int	is_group_a(t_vars *v, t_node *stack)
+int	is_group_a(t_vars *v, t_list *stack)
 {
 	if (group_n(v, stack, 7, 9))
 		return (1);
@@ -58,7 +58,7 @@ int	is_group_a(t_vars *v, t_node *stack)
 	return (0);
 }
 
-int	is_group_b(t_vars *v, t_node *stack)
+int	is_group_b(t_vars *v, t_list *stack)
 {
 	if (group_n(v, stack, 4, 6))
 		return (1);
@@ -77,7 +77,7 @@ int	is_group_b(t_vars *v, t_node *stack)
 	return (0);
 }
 
-int	is_group_c(t_vars *v, t_node *stack)
+int	is_group_c(t_vars *v, t_list *stack)
 {
 	if (group_n(v, stack, 1, 3))
 		return (1);
