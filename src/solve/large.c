@@ -6,13 +6,13 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/08 15:35:30 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/03 17:52:28 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/04 12:33:53 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	split_large_part_5(t_vars *v)
+static void	split_large_part_5(t_vars *v)
 {
 	while (!large_group_n(v, v->b.head, 6))
 	{
@@ -32,7 +32,7 @@ void	split_large_part_5(t_vars *v)
 	}
 }
 
-void	split_large_part_4(t_vars *v)
+static void	split_large_part_4(t_vars *v)
 {
 	while (!large_group_n(v, v->a.head, 8))
 	{
@@ -52,7 +52,7 @@ void	split_large_part_4(t_vars *v)
 	}
 }
 
-void	split_large_part_3(t_vars *v)
+static void	split_large_part_3(t_vars *v)
 {
 	while (!large_is_group_a(v, v->a.head))
 	{
@@ -72,7 +72,7 @@ void	split_large_part_3(t_vars *v)
 	}
 }
 
-void	split_large_part_2(t_vars *v)
+static void	split_large_part_2(t_vars *v)
 {
 	while (!large_group_n(v, v->b.head, 5))
 	{
@@ -92,7 +92,7 @@ void	split_large_part_2(t_vars *v)
 	}
 }
 
-void	split_large_part_1(t_vars *v)
+static void	split_large_part_1(t_vars *v)
 {
 	size_t	i;
 	size_t	size;

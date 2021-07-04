@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/04 10:06:50 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/04 13:10:15 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,54 +96,45 @@ typedef struct s_variables
 	int		(*cmd[11])(struct s_variables *);
 }	t_vars;
 
-/*		errors	*/
-int		ft_exit(char *str);
+/*		init	*/
+void	init(t_vars *v, size_t size, char **argv);
 void	check_minmax_int(char *str);
 void	check_malloc(void *ptr);
 void	check_digits(char *str);
 void	check_duplicate(t_vars *v, int num);
-
-/*		new	*/
 void	check_args(t_vars *v, int argc, char **argv);
-void	init(t_vars *v, size_t size, char **argv);
-void	**cmd(t_cmd cmd, int amount);
-void	print_data(t_vars *v);
 
 /*		utils	*/
+int		ft_exit(char *str);
 int		intcmp(t_elem *a, t_elem *b);
 int		rankcmp(int *ref, t_elem *e);
 int		finished(t_stack *a, t_stack *b);
+void	print_data(t_vars *v);
 
-/*		sorting	*/
-int		shortest_path(t_stack *s, size_t pos, size_t limit);
-void	find_lowest_rank(t_stack *s);
+/*		searching	*/
 void	find_highest_rank(t_stack *s);
-int		is_correct_rotation_order(t_stack *s);
-
-/*		to be deleted	*/
-int		rotate_left_or_right(t_vars *v, t_list *stack);
-
-/*		solve_small	*/
-int		solve_small(t_vars *v);
-
-/*		solve_medium	*/
+void	find_lowest_rank(t_stack *s);
 int		push_back(t_vars *v);
-int		swap_routine_check(t_vars *v);
-int		solve_medium(t_vars *v, size_t limit);
+int		is_correct_rotation_order(t_stack *s);
+int		shortest_path(t_stack *s, size_t pos, size_t limit);
+int		swap_routine(t_vars *v);
 
-/*		solve_large	*/
+/*		cmds	*/
+void	**cmd(t_cmd cmd, int amount);
+
+/*		solve	*/
+int		solve_small(t_vars *v);
+int		solve_medium(t_vars *v, size_t limit);
 int		solve_large(t_vars *v);
+int		solve_huge(t_vars *v);
+
 int		large_is_group_a(t_vars *v, t_list *stack);
 int		large_group_n(t_vars *v, t_list *stack, size_t num);
 
-/*		solve_huge	*/
-int		solve_huge(t_vars *v);
 int		group_n(t_vars *v, t_list *stack, size_t low, size_t high);
 int		is_group_x(t_vars *v, t_list *stack);
 int		is_group_a(t_vars *v, t_list *stack);
 int		is_group_b(t_vars *v, t_list *stack);
 int		is_group_c(t_vars *v, t_list *stack);
-
-
 
 #endif

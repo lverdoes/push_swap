@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/03 11:55:50 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/03 18:12:17 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/04 12:34:49 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,13 @@ void	**cmd(t_cmd cmd, int amount)
 	static t_vars	*ptr = NULL;
 	int				i;
 
+	if (!ptr)
+		return ((void **)&ptr);
 	i = 0;
 	while (i < amount)
 	{
 		ptr->cmd[cmd](ptr);
 		i++;
 	}
-	return ((void **)&ptr);
+	return (NULL);
 }

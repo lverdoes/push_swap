@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/07/04 10:44:21 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/07/04 13:11:26 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIB			=	$(LIBFT_DIR)/$(LIBFT)
 INCL_DIR	=	includes
 SRC_DIR		=	src
 OBJ_DIR		=	obj
-SUB_DIR		=	obj/cmds obj/init obj/solve obj/solve_utils obj/utils
+SUB_DIR		=	obj/cmds obj/init obj/search obj/solve obj/utils
 
 FLAGS		=	-Wall -Wextra -Werror -pedantic -O3 $(INCL)
 INCL		=	-I $(INCL_DIR) -I $(LIBFT_DIR)/$(INCL_DIR)
@@ -36,11 +36,11 @@ FILES		=	push_swap.c \
 				init/check_args.c \
 				init/check_ints.c \
 				init/init.c \
-				solve_utils/find_high_low.c \
-				solve_utils/push_back.c \
-				solve_utils/rotation_order.c \
-				solve_utils/shortest_path.c \
-				solve_utils/swap_routine.c \
+				search/find_high_low.c \
+				search/push_back.c \
+				search/rotation_order.c \
+				search/shortest_path.c \
+				search/swap_routine.c \
 				solve/huge_utils.c \
 				solve/huge.c \
 				solve/large_utils.c \
@@ -76,7 +76,7 @@ fclean: clean
 re: fclean all
 
 py: all
-	python3 pyviz.py `ruby -e "puts (1..5).to_a.shuffle.join(' ')"`
+	python3 pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
 
 arg: all
 	@./push_swap $($@) | ./$(CHECKER) $($@)

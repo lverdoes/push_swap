@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 20:19:12 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/04 09:50:05 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/04 12:58:42 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 
 static void	init_functions(t_vars *v)
 {
+	void	**ptr;
+
+	ptr = cmd(0, 0);
+	*ptr = v;
 	v->cmd[PA] = cmd_pa;
 	v->cmd[PB] = cmd_pb;
 	v->cmd[SA] = cmd_sa;
@@ -28,8 +32,6 @@ static void	init_functions(t_vars *v)
 	v->cmd[RRA] = cmd_rra;
 	v->cmd[RRB] = cmd_rrb;
 	v->cmd[RRR] = cmd_rrr;
-	void **ptr = cmd(0, 0);
-	*ptr = v;
 }
 
 static void	free_sorted(t_list *list)
@@ -106,7 +108,7 @@ void	init(t_vars *v, size_t size, char **args)
 	v->a.high = v->max_rank;
 	v->a.pos_high = ft_list_index(v->a.head, &v->a.high, rankcmp);
 	v->a.pos_low = ft_list_index(v->a.head, &v->a.low, rankcmp);
-	init_functions(v);
 	v->a.id = STACK_A;
 	v->b.id = STACK_B;
+	init_functions(v);
 }
