@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/07/05 14:50:52 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/07/06 00:48:25 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ FILES		=	push_swap.c \
 				search/rotation_order.c \
 				search/shortest_path.c \
 				solve/huge49.c \
+				solve/huge49edit.c \
 				solve/large11.c \
 				solve/medium.c \
 				solve/small.c \
@@ -80,8 +81,4 @@ arg: all
 	@./push_swap $($@) | ./$(CHECKER) $($@)
 	@./push_swap $($@) | wc -l
 
-##	just output:
 ##	max=500 ; export arg=`ruby -e "puts (1..$max).to_a.shuffle.join(' ')"` ; ./push_swap $arg | ./checker_Mac $arg ; ./push_swap $arg | wc -l
-
-##	print input:
-##	max=4 ; export arg=`ruby -e "puts (1..$max).to_a.shuffle.join(' ')"` ;  echo $arg ; ./push_swap $arg | ./checker_Mac $arg ; ./push_swap $arg | wc -l

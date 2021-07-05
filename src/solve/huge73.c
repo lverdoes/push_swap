@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   huge49.c                                           :+:    :+:            */
+/*   huge73.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/07 20:57:26 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/05 17:21:27 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/05 17:20:10 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static inline int	group_nrs(t_vars *v, t_stack *s, int ac, ...)
 {
-	static size_t const n_groups = 49;
+	static size_t const n_groups = 73;
 	int					i;
 	size_t				arg;
 	va_list				list;
@@ -44,7 +44,7 @@ static inline int	group_nrs(t_vars *v, t_stack *s, int ac, ...)
 
 static inline int	group_n(t_vars *v, t_stack *s, size_t low, size_t high)
 {
-	static size_t const n_groups = 49;
+	static size_t const n_groups = 73;
 	double				top;
 	double				bottom;
 	size_t				rank;
@@ -58,44 +58,44 @@ static inline int	group_n(t_vars *v, t_stack *s, size_t low, size_t high)
 }
 
 /*
-	a = 7-9, 11, 20-22, 26, 28-30, 39, 41-43
-	b = 4-6, 12, 17-19, 25, 31-33, 38, 44-46
-	c = 1-3, 13-16, 24, 34-37, 47-49
-	x = 10, 23, 27, 40
+	a = 
+	b = 
+	c = 
+	x = 
 */
 
 static inline int	group_x(t_vars *v, t_stack *stack)
 {
 	int const size = 4;
 
-	if (group_nrs(v, stack, size, 10, 23, 27, 40))
+	if (group_nrs(v, stack, size, ??))
 		return (1);
 	return (0);
 }
 
 static inline int	group_a(t_vars *v, t_stack *stack)
 {
-	int const size = 15;
+	int const size = 23;
 
-	if (group_nrs(v, stack, size, 7, 8, 9, 11, 20, 21, 22, 26, 28, 29, 30, 39, 41, 42, 43))
+	if (group_nrs(v, stack, size, ??))
 		return (1);
 	return (0);
 }
 
 static inline int	group_b(t_vars *v, t_stack *stack)
 {
-	int const size = 15;
+	int const size = 23;
 
-	if (group_nrs(v, stack, size, 4, 5, 6, 12, 17, 18, 19, 25, 31, 32, 33, 38, 44, 45, 46))
+	if (group_nrs(v, stack, size, ??))
 		return (1);
 	return (0);
 }
 
 static inline int	group_c(t_vars *v, t_stack *stack)
 {
-	int const size = 15;
+	int const size = 23;
 
-	if (group_nrs(v, stack, size, 1, 2, 3, 13, 14, 15, 16, 24, 34, 35, 36, 37, 47, 48, 49))
+	if (group_nrs(v, stack, size, ??))
 		return (1);
 	return (0);
 }
@@ -367,7 +367,7 @@ static inline void	part_xabc(t_vars *v)
 	}
 }
 
-int	solve_huge49(t_vars *v)
+int	solve_huge73(t_vars *v)
 {
 	part_xabc(v);
 	part_x(v);
