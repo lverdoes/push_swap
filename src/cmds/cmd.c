@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/03 11:55:50 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/04 12:34:49 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/05 15:02:22 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,10 @@ int	cmd_rrr(t_vars *v)
 	return (0);
 }
 
-void	**cmd(t_cmd cmd, int amount)
+void	**cmd(t_cmd cmd, size_t amount)
 {
 	static t_vars	*ptr = NULL;
-	int				i;
+	size_t			i;
 
 	if (!ptr)
 		return ((void **)&ptr);

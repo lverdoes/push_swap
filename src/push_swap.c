@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 22:00:06 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/04 00:30:31 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/05 13:52:25 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static int	solve(t_vars *v)
 {
 	if (finished(&v->a, &v->b))
 		return (1);
-	if (v->total_size > HUGE)
-		return (solve_huge(v));
-	if (v->total_size > LARGE)
-		return (solve_large(v));
-	if (v->total_size > MEDIUM)
-		return (solve_medium(v, 2));
+	if (v->total_size > 250)
+		return (solve_huge49(v));
+	if (v->total_size > 50)
+		return (solve_large11(v));
+	if (v->total_size > 5)
+		return (solve_medium(v));
 	return (solve_small(v));
 }
 

@@ -6,16 +6,12 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/04 13:10:15 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/05 15:02:30 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-# define MEDIUM 15
-# define LARGE 45
-# define HUGE 200
 
 # define SPACE " "
 # define SPLIT_CHARS "\n \t"
@@ -98,14 +94,14 @@ typedef struct s_variables
 
 /*		init	*/
 void	init(t_vars *v, size_t size, char **argv);
+void	check_args(t_vars *v, int argc, char **argv);
 void	check_minmax_int(char *str);
-void	check_malloc(void *ptr);
 void	check_digits(char *str);
 void	check_duplicate(t_vars *v, int num);
-void	check_args(t_vars *v, int argc, char **argv);
 
 /*		utils	*/
 int		ft_exit(char *str);
+void	check_malloc(void *ptr);
 int		intcmp(t_elem *a, t_elem *b);
 int		rankcmp(int *ref, t_elem *e);
 int		finished(t_stack *a, t_stack *b);
@@ -117,24 +113,14 @@ void	find_lowest_rank(t_stack *s);
 int		push_back(t_vars *v);
 int		is_correct_rotation_order(t_stack *s);
 int		shortest_path(t_stack *s, size_t pos, size_t limit);
-int		swap_routine(t_vars *v);
 
 /*		cmds	*/
-void	**cmd(t_cmd cmd, int amount);
+void	**cmd(t_cmd cmd, size_t amount);
 
 /*		solve	*/
 int		solve_small(t_vars *v);
-int		solve_medium(t_vars *v, size_t limit);
-int		solve_large(t_vars *v);
-int		solve_huge(t_vars *v);
-
-int		large_is_group_a(t_vars *v, t_list *stack);
-int		large_group_n(t_vars *v, t_list *stack, size_t num);
-
-int		group_n(t_vars *v, t_list *stack, size_t low, size_t high);
-int		is_group_x(t_vars *v, t_list *stack);
-int		is_group_a(t_vars *v, t_list *stack);
-int		is_group_b(t_vars *v, t_list *stack);
-int		is_group_c(t_vars *v, t_list *stack);
+int		solve_medium(t_vars *v);
+int		solve_large11(t_vars *v);
+int		solve_huge49(t_vars *v);
 
 #endif

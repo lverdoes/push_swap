@@ -6,7 +6,7 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/03 15:09:36 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/07/04 13:11:26 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/07/05 14:50:52 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC_DIR		=	src
 OBJ_DIR		=	obj
 SUB_DIR		=	obj/cmds obj/init obj/search obj/solve obj/utils
 
-FLAGS		=	-Wall -Wextra -Werror -pedantic -O3 $(INCL)
+FLAGS		=	-Wall -Wextra -Werror -pedantic -O3 $(INCL) $(UNUSED)
+UNUSED		=	-Wno-unused-variable -Wno-unused-parameter -Wno-unused-function
 INCL		=	-I $(INCL_DIR) -I $(LIBFT_DIR)/$(INCL_DIR)
 
 SRC 		=	$(addprefix $(SRC_DIR)/, $(FILES))
@@ -40,11 +41,8 @@ FILES		=	push_swap.c \
 				search/push_back.c \
 				search/rotation_order.c \
 				search/shortest_path.c \
-				search/swap_routine.c \
-				solve/huge_utils.c \
-				solve/huge.c \
-				solve/large_utils.c \
-				solve/large.c \
+				solve/huge49.c \
+				solve/large11.c \
 				solve/medium.c \
 				solve/small.c \
 				utils/print_data.c \
@@ -82,5 +80,8 @@ arg: all
 	@./push_swap $($@) | ./$(CHECKER) $($@)
 	@./push_swap $($@) | wc -l
 
-
+##	just output:
 ##	max=500 ; export arg=`ruby -e "puts (1..$max).to_a.shuffle.join(' ')"` ; ./push_swap $arg | ./checker_Mac $arg ; ./push_swap $arg | wc -l
+
+##	print input:
+##	max=4 ; export arg=`ruby -e "puts (1..$max).to_a.shuffle.join(' ')"` ;  echo $arg ; ./push_swap $arg | ./checker_Mac $arg ; ./push_swap $arg | wc -l

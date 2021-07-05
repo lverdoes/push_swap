@@ -6,24 +6,31 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 21:38:51 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/04 10:23:12 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/05 12:07:33 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	solve_medium(t_vars *v, size_t limit)
+static void push_in_range(t_vars *v)
 {
-	size_t	scope;
-	t_elem	*e;
+	size_t const	range = 2;
+	size_t			rank;
 
-	while (v->a.size > MEDIUM)
+	rank = ((t_elem *)v->a.head->content)->rank;
+	if (rank < v->a.low + range)
+		cmd(PB, 1);
+}
+
+int	solve_medium(t_vars *v)
+{
+	push_in_range(v);
+	while (v->a.size > 3)
 	{
 		shortest_path(&v->a, v->a.pos_low, 1);
-		scope = v->a.low + limit;
-		e = v->a.head->content;
-		if (e->rank <= scope)
-			cmd(PB, 1);
+		push_in_range(v);
 	}
-	return (solve_small(v));
+	solve_small(v);
+	push_back(v);
+	return (0);
 }

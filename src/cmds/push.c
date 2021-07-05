@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 16:40:27 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/04 00:29:51 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/05 00:06:06 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,12 @@ static void	update_pos(t_stack *src, t_stack *dst)
 	t_elem	*e;
 
 	e = dst->head->content;
-	if (e->rank > dst->high)
+	if (dst->size == 1)
+	{
+		dst->pos_high = 0;
+		dst->pos_low = 0;
+	}
+	else if (e->rank > dst->high)
 	{
 		dst->high = e->rank;
 		dst->pos_high = 0;
