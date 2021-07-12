@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/07 20:57:26 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/05 17:21:27 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/12 10:35:04 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -381,6 +381,6 @@ int	solve_huge49(t_vars *v)
 	part_10(v);
 	part_11(v);
 	part_finish(v);
-	solve_medium(v);
+	solve_medium(&v->a, &v->b);
 	return (1);
 }

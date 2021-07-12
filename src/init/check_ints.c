@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 19:39:45 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/03 12:14:10 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/12 10:20:42 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	insert_sort(t_list **head, t_list *list, int (*cmp)())
 	ft_list_add_back(head, list);
 }
 
-void	check_duplicate(t_vars *v, int num)
+void	check_duplicate(t_vars *v, int num, t_list **head_sorted)
 {
 	t_list	*new;
 	t_elem	*dup;
@@ -74,5 +74,5 @@ void	check_duplicate(t_vars *v, int num)
 	new = ft_list_new(dup);
 	check_malloc(new);
 	dup->num = num;
-	insert_sort(&v->sorted, new, intcmp);
+	insert_sort(head_sorted, new, intcmp);
 }

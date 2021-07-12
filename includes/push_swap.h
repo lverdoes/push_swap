@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 15:24:14 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/05 20:21:54 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/12 17:57:12 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ typedef struct s_variables
 	t_stack	b;
 	size_t	total_size;
 	size_t	max_rank;
-	t_list	*sorted;
 	t_args	args;
 	t_data	data;
 	int		(*cmd[11])(struct s_variables *);
@@ -97,7 +96,7 @@ void	init(t_vars *v, size_t size, char **argv);
 void	check_args(t_vars *v, int argc, char **argv);
 void	check_minmax_int(char *str);
 void	check_digits(char *str);
-void	check_duplicate(t_vars *v, int num);
+void	check_duplicate(t_vars *v, int num, t_list **head_sorted);
 
 /*		utils	*/
 int		ft_exit(char *str);
@@ -110,7 +109,7 @@ void	print_data(t_vars *v);
 /*		searching	*/
 void	find_highest_rank(t_stack *s);
 void	find_lowest_rank(t_stack *s);
-int		push_back(t_vars *v);
+int		push_back(t_stack *a, t_stack *b);
 int		is_correct_rotation_order(t_stack *s);
 int		shortest_path(t_stack *s, size_t pos, size_t limit);
 
@@ -118,8 +117,8 @@ int		shortest_path(t_stack *s, size_t pos, size_t limit);
 void	**cmd(t_cmd cmd, size_t amount);
 
 /*		solve	*/
-int		solve_small(t_vars *v);
-int		solve_medium(t_vars *v);
+int		solve_small(t_stack *a, t_stack *b);
+int		solve_medium(t_stack *a, t_stack *b);
 int		solve_large11(t_vars *v);
 int		solve_huge49(t_vars *v);
 int		solve_huge49edit(t_vars *v);

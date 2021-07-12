@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/07 20:57:26 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/06 08:14:07 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/12 12:23:49 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,140 +195,190 @@ static inline int	group_a(t_vars *v, t_stack *stack)
 	return (0);
 }
 
+
 static inline void	part_3(t_vars *v)
 {
 	size_t	i;
 	size_t	size;
+	size_t	counter;
 
+	counter = 0;
 	i = 0;
 	size = v->a.size;
 	while (i < size)
 	{
 		if (group_n(v, &v->a, 35, 49))
-			cmd(RA, 1);
-		else
+		{
+			if (counter > 0)
+			{
+				counter--;
+				cmd(RR, 1);
+			}
+			else
+				cmd(RA, 1);
+		}
+		else if (group_n(v, &v->a, 1, 15))
 		{
 			cmd(PB, 1);
-			if (group_n(v, &v->b, 1, 15))
-			{
-				if (group_n(v, &v->a, 35, 49))
-				{
-					cmd(RR, 1);
-					i++;
-				}
-				else
-					cmd(RB, 1);
-			}
+			counter++;
+		}
+		else
+		{
+			if (counter > 0)
+				cmd(RB, counter);
+			counter = 0;
+			cmd(PB, 1);
 		}
 		i++;
 	}
+	cmd(RB, counter);
 }
 
 static inline void	part_7(t_vars *v)
 {
 	size_t	i;
 	size_t	size;
+	size_t	counter;
 
+	counter = 0;
 	i = 0;
 	size = v->b.size;
 	while (i < size)
 	{
 		if (group_mid_b(v, &v->b))
-			cmd(RB, 1);
-		else
+		{
+			if (counter > 0)
+			{
+				counter--;
+				cmd(RR, 1);
+			}
+			else
+				cmd(RB, 1);
+		}
+		else if (group_7_low(v, &v->b))
 		{
 			cmd(PA, 1);
-			if (group_7_low(v, &v->a))
-			{
-				if (group_mid_b(v, &v->b))
-				{
-					cmd(RR, 1);
-					i++;
-				}
-				else
-					cmd(RA, 1);
-			}
+			counter++;
+		}
+		else
+		{
+			if (counter > 0)
+				cmd(RA, counter);
+			counter = 0;
+			cmd(PA, 1);
 		}
 		i++;
 	}
+	cmd(RA, counter);
 }
 
 static inline void	part_13(t_vars *v)
 {
+	size_t	counter;
+
+	counter = 0;
 	while (!group_7a(v, &v->b))
 	{
 		if (group_7b(v, &v->b) || group_7c(v, &v->b) || group_7d(v, &v->b))
-			cmd(RB, 1);
-		else
+		{
+			if (counter > 0)
+			{
+				counter--;
+				cmd(RR, 1);
+			}
+			else
+				cmd(RB, 1);
+		}
+		else if (group_13_low(v, &v->b))
 		{
 			cmd(PA, 1);
-			if (group_13_low(v, &v->a))
-			{
-				if (group_7b(v, &v->b) || group_7c(v, &v->b) || group_7d(v, &v->b))
-					cmd(RR, 1);
-				else
-					cmd(RA, 1);
-			}
+			counter++;
+		}
+		else
+		{
+			if (counter > 0)
+				cmd(RA, counter);
+			counter = 0;
+			cmd(PA, 1);
 		}
 	}
+	cmd(RA, counter);
 }
 
 static inline void	part_23(t_vars *v)
 {
 	size_t	i;
 	size_t	size;
+	size_t	counter;
 
+	counter = 0;
 	i = 0;
 	size = v->a.size;
 	while (i < size)
 	{
 		if (group_mid_a(v, &v->a))
-			cmd(RA, 1);
-		else
+		{
+			if (counter > 0)
+			{
+				counter--;
+				cmd(RR, 1);
+			}
+			else
+				cmd(RA, 1);
+		}
+		else if (group_7a(v, &v->a))
 		{
 			cmd(PB, 1);
-			if (group_7a(v, &v->b))
-			{
-				if (group_mid_a(v, &v->a))
-				{
-					cmd(RR, 1);
-					i++;
-				}
-				else
-					cmd(RB, 1);
-			}
+			counter++;
+		}
+		else
+		{
+			if (counter > 0)
+				cmd(RB, counter);
+			counter = 0;
+			cmd(PB, 1);
 		}
 		i++;
 	}
+	cmd(RB, counter);
 }
 
 static inline void	part_49(t_vars *v)
 {
 	size_t	i;
 	size_t	size;
+	size_t	counter;
 
+	counter = 0;
 	i = 0;
 	size = v->a.size;
 	while (i < size)
 	{
 		if (group_mid_a(v, &v->a) || group_a(v, &v->a))
-			cmd(RA, 1);
-		else
+		{
+			if (counter > 0)
+			{
+				counter--;
+				cmd(RR, 1);
+			}
+			else
+				cmd(RA, 1);
+		}
+		else if (group_13c(v, &v->a))
 		{
 			cmd(PB, 1);
-			if (group_13c(v, &v->b))
-			{
-				if (group_mid_a(v, &v->a) || group_a(v, &v->a))
-				{
-					cmd(RR, 1);
-					i++;
-				}
-				else
-					cmd(RB, 1);
-			}
+			counter++;
+		}
+		else
+		{
+			if (counter > 0)
+				cmd(RB, counter);
+			counter = 0;
+			cmd(PB, 1);
 		}
 		i++;
 	}
+	cmd(RB, counter);
 }
 
 int	solve_huge49edit(t_vars *v)
@@ -338,6 +388,6 @@ int	solve_huge49edit(t_vars *v)
 	part_13(v);
 	part_7(v);
 	part_3(v);
-	solve_medium(v);
+	solve_medium(&v->a, &v->b);
 	return (1);
 }

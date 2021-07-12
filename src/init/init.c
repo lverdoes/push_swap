@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/03 20:19:12 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/04 12:58:42 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/12 10:22:19 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static size_t	list_index(t_list *start, void *data_ref, int (*cmp)())
 	return (ret);
 }
 
-static void	assign_rank(t_vars *v)
+static void	assign_rank(t_vars *v, t_list *head_sorted)
 {
 	t_list	*list;
 	t_elem	*elem;
@@ -76,7 +76,7 @@ static void	assign_rank(t_vars *v)
 	while (list)
 	{
 		elem = list->content;
-		elem->rank = list_index(v->sorted, list->content, intcmp);
+		elem->rank = list_index(head_sorted, list->content, intcmp);
 		list = list->next;
 	}
 }
@@ -85,7 +85,9 @@ void	init(t_vars *v, size_t size, char **args)
 {
 	t_list	*new;
 	t_elem	*element;
+	t_list	*head_sorted;
 
+	head_sorted = NULL;
 	while (size > 0)
 	{
 		size--;
@@ -96,11 +98,11 @@ void	init(t_vars *v, size_t size, char **args)
 		new = ft_list_new(element);
 		check_malloc(new);
 		element->num = ft_atoi(args[size]);
-		check_duplicate(v, element->num);
+		check_duplicate(v, element->num, &head_sorted);
 		ft_list_add_front(&v->a.head, new);
 	}
-	assign_rank(v);
-	free_sorted(v->sorted);
+	assign_rank(v, head_sorted);
+	free_sorted(head_sorted);
 	v->total_size = ft_list_size(v->a.head);
 	v->a.size = v->total_size;
 	v->max_rank = v->total_size - 1;

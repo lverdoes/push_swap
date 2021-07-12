@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/04 09:29:59 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/05 16:14:36 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/12 10:10:20 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	swap_check(t_stack *a, t_stack *b)
 			cmd(PA, 2);
 		}
 	}
-	else
+	else 
 	{
 		if (swap_check_stack_a(a))
 			cmd(SS, 1);
@@ -78,20 +78,20 @@ static void	swap_check(t_stack *a, t_stack *b)
 	}
 }
 
-int	push_back(t_vars *v)
+int	push_back(t_stack *a, t_stack *b)
 {
-	while (v->b.head)
+	while (b->head)
 	{
-		if (v->b.pos_high == 1)
-			swap_check(&v->a, &v->b);
-		if (v->b.pos_high == 0)
+		if (b->pos_high == 1)
+			swap_check(a, b);
+		if (b->pos_high == 0)
 		{
-			if (swap_check_stack_a(&v->a))
+			if (swap_check_stack_a(a))
 				cmd(SA, 1);
 			cmd(PA, 1);
 		}
 		else
-			shortest_path(&v->b, v->b.pos_high, 1);
+			shortest_path(b, b->pos_high, 1);
 	}
 	return (0);
 }
