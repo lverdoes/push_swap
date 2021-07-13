@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/04 09:29:59 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/12 10:10:20 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/13 00:11:47 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	swap_check(t_stack *a, t_stack *b)
 			cmd(PA, 2);
 		}
 	}
-	else 
+	else
 	{
 		if (swap_check_stack_a(a))
 			cmd(SS, 1);
