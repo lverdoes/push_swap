@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/04 09:29:59 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/13 00:11:47 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/14 10:43:22 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ int	push_back(t_stack *a, t_stack *b)
 		{
 			if (swap_check_stack_a(a))
 				cmd(SA, 1);
-			cmd(PA, 1);
+			if (b->size)
+				cmd(PA, 1);
 		}
 		else
 			shortest_path(b, b->pos_high, 1);

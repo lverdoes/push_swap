@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 21:38:51 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/13 12:50:15 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/14 10:35:09 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,20 @@ int	solve_medium(t_stack *a, t_stack *b)
 {
 	t_cmd	rot_dir;
 
-	push_in_range(a);
-	while (a->size > 3)
+	while (a->size > 4)
 	{
-		if (a->pos_low == 1)
+		if (is_correct_rotation_order(a))
+		{
+			shortest_path(a, a->pos_low, 0);
+			break;
+		}
+		else if (a->pos_low == 1)
 			cmd(SA, 1);
 		else
 		{
+			push_in_range(a);
 			shortest_path(a, a->pos_low, 1);
 		}
-		push_in_range(a);
 	}
 	solve_small(a, b);
 	push_back(a, b);

@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/04 18:18:28 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/12 10:28:06 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/14 10:33:47 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static int	solve_4(t_stack *a, t_stack *b)
 
 int	solve_small(t_stack *a, t_stack *b)
 {
-	if (a->size > 3)
-		return (solve_4(a, b));
 	if (a->size == 3)
 		return (solve_3(a, b));
+	if (a->size > 3)
+		return (solve_4(a, b));
 	if (a->pos_low == 1)
 		cmd(SA, 1);
 	return (0);
