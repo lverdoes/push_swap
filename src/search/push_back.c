@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/04 09:29:59 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/14 10:43:22 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/14 13:59:55 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,7 @@ int	push_back(t_stack *a, t_stack *b)
 		else
 			shortest_path(b, b->pos_high, 1);
 	}
+	if (swap_check_stack_a(a))
+		cmd(SA, 1);
 	return (0);
 }

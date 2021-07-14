@@ -6,7 +6,7 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/04 10:43:57 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/07/04 10:44:04 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/07/14 13:55:18 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	shortest_path(t_stack *s, size_t pos, size_t limit)
 	t_cmd	dir_rr;
 	t_cmd	dir_r;
 
+	if (s->size < 2)
+		return (1);
 	if (s->id == STACK_A)
 	{
 		dir_rr = RRA;
